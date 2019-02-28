@@ -1,0 +1,19 @@
+defmodule InfinibirdEngine.Server do
+  use GenServer
+  alias InfinibirdEngine.DataProvider
+  @server_name :infinibird_server
+
+  def start_link(state), do: GenServer.start_link(__MODULE__, state, name: @server_name)
+
+  def init(data), do: {:ok, data}
+
+  def handle_call({:get_mock_data}, _from, state) do
+    DataProvider.get_mock_data()
+    |> Enum.map(&(&1 * 2))
+    |> reply_success(:ok, state)
+  end
+
+  defp reply_success(data, reply, state) do
+    {:reply, {reply, data}, state}
+  end
+end
