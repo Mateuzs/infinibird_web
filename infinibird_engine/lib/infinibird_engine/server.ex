@@ -1,9 +1,10 @@
 defmodule InfinibirdEngine.Server do
   use GenServer
-  alias InfinibirdEngine.DataProvider
-  @server_name :infinibird_server
+  alias InfinibirdEngine.{DataProvider, Constants}
+  @infinibird_server Constants.infinibird_server()
 
-  def start_link(state), do: GenServer.start_link(__MODULE__, state, name: @server_name)
+  def start_link(state),
+    do: GenServer.start_link(__MODULE__, state, name: @infinibird_server)
 
   def init(data), do: {:ok, data}
 
