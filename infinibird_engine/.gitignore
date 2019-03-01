@@ -24,4 +24,4 @@ infinibird_engine-*.tar
 
 # unnecessary files
 .elixir_ls
-.DS-Store
+.DS_Store
