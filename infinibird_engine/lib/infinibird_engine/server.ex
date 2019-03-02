@@ -9,8 +9,7 @@ defmodule InfinibirdEngine.Server do
   def init(data), do: {:ok, data}
 
   def handle_call({:get_mock_data}, _from, state) do
-    DataProvider.get_mock_data()
-    |> Enum.map(&(&1 * 2))
+    DataProvider.get_chart_mock_data()
     |> reply_success(:ok, state)
   end
 

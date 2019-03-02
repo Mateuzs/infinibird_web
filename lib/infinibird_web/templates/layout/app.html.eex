@@ -52,21 +52,19 @@
                     class: "btn btn-dark nvb-btn btn-xs delete btn-margin" ,
                     data: []
                     %>
-                </div>
-              </nav>
-            </header>
-              <div role="main" class="main">
-              <div class="container  w-100 row ">
-                  <div class=" w-100 d-flex align-self-center align-items-center justify-content-center ">
-                    <%= render(@view_module, @view_template, assigns) %>
-                  </div>
-                   </div>
-
               </div>
-           
-          
-    </body>
-      <div class="footer ">
-                    <h5>Proudly crafted by Mateusz</h5>
-                  </div>    
-</html>
+        </nav>
+      </header>
+      <div role="main" class="main">
+        <div class="container  w-100 row ">
+          <div class=" w-100 d-flex align-self-center align-items-center justify-content-center ">
+            <%= render(@view_module, @view_template, assigns) %>
+          </div>
+        </div>
+      </div> 
+      <div class="footer">
+        <h5>Proudly crafted by Mateusz</h5>
+      </div>
+    </body>  
+  </html>
+  
