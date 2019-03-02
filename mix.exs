@@ -45,7 +45,8 @@ defmodule Infinibird.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:poison, "~> 4.0", override: true},
       {:chartkick, "~> 0.3.0", override: true},
-      {:infinibird_engine, path: "./infinibird_engine"}
+      {:infinibird_engine, path: "./infinibird_engine"},
+      {:distillery, "~>1.5", runtime: false}
     ]
   end
 
