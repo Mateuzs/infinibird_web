@@ -17,6 +17,7 @@ defmodule InfinibirdWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/charts", ChartsController, :index
   end
 
   # Other scopes may use custom stacks.

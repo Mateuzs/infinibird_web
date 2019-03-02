@@ -1,35 +1,72 @@
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en" class="h-100 d-flex" >
   <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Infinibird · Phoenix Framework</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
-  </head>
-  <body class="h-100 bg-light">
-    <header> 
-        <nav class="navbar navbar-dark bg-danger d-flex  justify-content-end align-items-center">
-          <button class="btn d-flex justify-content-right btn-dark" type="button" >
-            Login
-          </button>  
-        </nav>
-    </header>
-   
-    <div class="container h-100">   
-      <div class="d-flex row h-100 justify-content-center align-items-center ">
-        <%= link "Get Mock Data!",
-      method: :get,
-      to: get_mock_data(@conn),
-      class: "btn btn-xs btn-dark delete",
-      data: []
-      %>
-      </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
-  </body>
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn,"/css/app.css" )
+      %>"/>
+    <script src="//www.google.com/jsapi"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn,"/js/app.js") %>"></script>
+    <body class="body h-100  w-100 d-flex flex-column">
+      <header>
+        <nav class="nvb navbar navbar-dark d-flex align-items-center">
+          <div>
+            <%= link"Home" ,
+              method: :get,
+              to: "/" ,
+              class: "btn btn-dark nvb-btn btn-xs  delete btn-margin" ,
+              data: []
+              %>
+              <%= link"Charts!" ,
+                method: :get,
+                to: "/charts" ,
+                class: "btn-dark btn nvb-btn btn-xs  delete btn-margin" ,
+                data: []
+                %>
+              </div>
+              <div>
+                <h4 class="title">Infinibird</h4>
+              </div>
+              <div>
+                  <%= link"Login" ,
+                    method: :get,
+                    to: "/" ,
+                    class: "btn btn-dark nvb-btn btn-xs delete btn-margin" ,
+                    data: []
+                    %>
+                </div>
+              </nav>
+            </header>
+              <div role="main" class="main">
+              <div class="container  w-100 row ">
+                  <div class=" w-100 d-flex align-self-center align-items-center justify-content-center ">
+                    <%= render(@view_module, @view_template, assigns) %>
+                  </div>
+                   </div>
+
+              </div>
+           
+          
+    </body>
+      <div class="footer ">
+                    <h5>Proudly crafted by Mateusz</h5>
+                  </div>    
 </html>
