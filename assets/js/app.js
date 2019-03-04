@@ -4,6 +4,8 @@
 
 import Chartkick from "chartkick";
 
+// Import local files
+
 // do JS stuff
 window.Chartkick = Chartkick;
 
