@@ -20,7 +20,7 @@ defmodule Infinibird.MixProject do
   def application do
     [
       mod: {Infinibird.Application, []},
-      extra_applications: [:logger, :runtime_tools, :uuid]
+      extra_applications: [:logger, :runtime_tools, :uuid, :poison]
     ]
   end
 
