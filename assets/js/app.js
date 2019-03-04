@@ -10,4 +10,4 @@ import Chartkick from "chartkick";
 import css from "../css/app.css";
 
 // do JS stuff
-//window.Chartkick = Chartkick;
+window.Chartkick = Chartkick;
