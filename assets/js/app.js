@@ -3,6 +3,7 @@
 // its own CSS file.
 
 import Chartkick from "chartkick";
+
 // do JS stuff
 window.Chartkick = Chartkick;
 
