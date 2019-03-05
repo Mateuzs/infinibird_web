@@ -49,7 +49,7 @@
               <div>
                   <%= link"Login" ,
                     method: :get,
-                    to: "/" ,
+                    to: "/login" ,
                     class: "btn btn-dark nvb-btn btn-xs delete btn-margin" ,
                     data: []
                     %>
@@ -58,15 +58,13 @@
       </header>
 
       <div role="main" class="main">
-        <div class="container  w-100 row ">
-          <div class=" w-100 d-flex align-self-center align-items-center justify-content-center ">
+          <div class="container align-self-center align-items-center justify-content-center ">
             <%= render(@view_module, @view_template, assigns) %>
           </div>
-        </div>
       </div> 
 
       <div class="footer">
-        <h5>Proudly crafted by Mateusz</h5>
+        <h5>Proudly crafted by Mateusz (v0.1.0)</h5>
       </div>
     </body>  
   </html>
