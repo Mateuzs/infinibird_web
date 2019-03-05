@@ -1,12 +1,11 @@
 /* This file is for your main application css. */
 
 
-.body, html{
+body, html{
     background: #e1e1eb;
-    height: 100%;
-    max-height:100%;
-    overflow-y:auto;
-
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 .body::-webkit-scrollbar { 
@@ -14,14 +13,16 @@
 }
 
 .main{
-    height: 100%;
+    flex-grow: 1;
+    margin-bottom: 3%;
 }
 .title{
     color: rgb(231, 185, 68);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2em;
     margin-top: 5px;
-    margin-bottom: 0px
+    margin-bottom: 0px;
+
 }
 
 .description-block{
@@ -31,7 +32,6 @@
     margin-top: 5px;
     margin-bottom: 1em;
     text-align: center;
-
 }
 
 .nvb{
@@ -51,26 +51,33 @@
     background: #3a3636;
     border: goldenrod solid 2px;
     border-radius: 8px;
-    width: 90%;
-    margin: 1%;
+    width: 95%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     padding: 2%;
-    height: 100%;
-
+    -ms-box-orient: horizontal;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .chart{
-    margin: 5px 5px 5px 5px ;
+    margin: 1% ;
     border-radius: 4px;
-    width: 45%;
-    min-width: 350px;
+    width: 48%;
+    min-width: 400px;
 }
 
 .container{
     margin: 0;
-    padding: 0;
     max-width: 100%;
-    height: 100%;
-    overflow-y: auto;
+
 }
 
 .container::-webkit-scrollbar { 
@@ -86,9 +93,12 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.5em;
     opacity: 0.9;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    font-size:small;
+    text-align:center;
+    clear: both;
+    bottom:0;
+    margin-top: 2%;
+
 }
 
 .h, h5{
