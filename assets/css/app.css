@@ -9,6 +9,10 @@
 
 }
 
+.body::-webkit-scrollbar { 
+    display: none; 
+}
+
 .main{
     height: 100%;
 }
@@ -69,6 +73,11 @@
     overflow-y: auto;
 }
 
+.container::-webkit-scrollbar { 
+    display: none; 
+}
+
+
 .footer{
     background: #590680;
     text-align: center;
@@ -80,4 +89,8 @@
     right: 0;
     bottom: 0;
     left: 0;
+}
+
+.h, h5{
+    margin: 0;
 }

@@ -25,6 +25,7 @@
       crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="<%= Routes.static_path(@conn,"/js/app.js") %>"></script>
+    </head>
     <body class="body h-100  w-100 d-flex flex-column">
       <header>
         <nav class="nvb navbar navbar-dark d-flex align-items-center">

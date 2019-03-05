@@ -5,7 +5,7 @@ defmodule Infinibird.MixProject do
     [
       app: :infinibird,
       version: "0.1.0",
-      elixir: "~> 1.8",
+      elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -20,7 +20,7 @@ defmodule Infinibird.MixProject do
   def application do
     [
       mod: {Infinibird.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :uuid, :poison]
     ]
   end
 
@@ -43,7 +43,6 @@ defmodule Infinibird.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:poison, "~> 4.0", override: true},
       {:chartkick, "~> 0.3.0", override: true},
       {:infinibird_engine, path: "./infinibird_engine"},
       {:distillery, "~>1.5", runtime: false}
