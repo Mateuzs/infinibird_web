@@ -1,34 +1,30 @@
 
-<div class="charts-container flex-d justify-content-center align-items-center align-self-center
-    ">
 
     <div class="description-block"><h1> Sample charts generated with data
             fetched from GenServer</h1></div>
+<ul class="charts-container">
+        <li class="chart "> <%= raw Chartkick.pie_chart pie_chart_data(@conn) %> </li>
 
-
-        <div class="chart ">
-            <%= raw Chartkick.pie_chart pie_chart_data(@conn) %>
-            </div>
-
-            <div class="chart ">
+            <li class="chart ">
                 <%= raw Chartkick.line_chart line_chart_data(@conn) %>
-                </div>
+                </li>
 
-                <div class="chart ">
+                <li class="chart ">
                     <%= raw Chartkick.column_chart column_chart_data(@conn) %>
-                    </div>
+                    </li>
 
-                    <div class="chart ">
+                    <li class="chart ">
                         <%= raw Chartkick.area_chart area_chart_data(@conn) %>
-                        </div>
+                        </li>
 
-                        <div class="chart ">
+                        <li class="chart ">
                             <%= raw Chartkick.line_chart multilines_chart_data(@conn) %>
-                            </div>
+                            </li>
 
-                            <div class="chart ">
+                            <li class="chart ">
                                 <%= raw Chartkick.geo_chart geo_chart_data(@conn) %>
-                                </div>
+                                </li>
+                                
 
                             
-                        </div>
+                        </ul>

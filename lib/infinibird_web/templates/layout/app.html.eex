@@ -27,45 +27,41 @@
     <script type="text/javascript" src="<%= Routes.static_path(@conn,"/js/app.js") %>"></script>
     </head>
     <body class="body">
-      <header>
-        <nav class="nvb navbar navbar-dark d-flex align-items-center">
-          <div>
-            <%= link"Home" ,
-              method: :get,
-              to: "/" ,
-              class: "btn btn-dark nvb-btn btn-xs  delete btn-margin" ,
-              data: []
-              %>
-              <%= link"Charts!" ,
+      <div role="main" class="main">
+        <header  class="header  navbar navbar-dark d-flex align-items-center">
+            <div>
+              <%= link"Home" ,
                 method: :get,
-                to: "/charts" ,
-                class: "btn-dark btn nvb-btn btn-xs  delete btn-margin" ,
+                to: "/" ,
+                class: "btn btn-dark nvb-btn btn-xs  delete btn-margin" ,
                 data: []
                 %>
-              </div>
-              <div>
-                <h4 class="title">Infinibird</h4>
-              </div>
-              <div>
-                  <%= link"Login" ,
-                    method: :get,
-                    to: "/login" ,
-                    class: "btn btn-dark nvb-btn btn-xs delete btn-margin" ,
-                    data: []
-                    %>
-              </div>
-        </nav>
-      </header>
-
-      <div role="main" class="main">
-          <div class="container align-self-center align-items-center justify-content-center ">
-            <%= render(@view_module, @view_template, assigns) %>
-          </div>
+                <%= link"Charts!" ,
+                  method: :get,
+                  to: "/charts" ,
+                  class: "btn-dark btn nvb-btn btn-xs  delete btn-margin" ,
+                  data: []
+                  %>
+                </div>
+                <div>
+                  <h4 class="title">Infinibird</h4>
+                </div>
+                <div>
+                    <%= link"Login" ,
+                      method: :get,
+                      to: "/login" ,
+                      class: "btn btn-dark nvb-btn btn-xs delete btn-margin" ,
+                      data: []
+                      %>
+                </div>
+        </header>
+        <div class="container">
+          <%= render(@view_module, @view_template, assigns) %>
+        </div>
+        <div class="footer">
+          <h5>Proudly crafted by Mateusz (v0.1.0)</h5>
+        </div>
       </div> 
-
-      <div class="footer">
-        <h5>Proudly crafted by Mateusz (v0.1.0)</h5>
-      </div>
     </body>  
   </html>
   
