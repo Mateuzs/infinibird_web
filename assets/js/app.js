@@ -9,7 +9,9 @@ import L from "leaflet";
 
 // Import local files
 import css from "../css/app.css";
+import integrateMap from "../js/integrateMap";
 
 // do JS stuff
 window.Chartkick = Chartkick;
 window.L = L;
+window.integrateMap = integrateMap;
