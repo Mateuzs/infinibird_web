@@ -5,9 +5,11 @@
 // Import dependencies
 import "phoenix_html";
 import Chartkick from "chartkick";
+import L from "leaflet";
 
 // Import local files
 import css from "../css/app.css";
 
 // do JS stuff
 window.Chartkick = Chartkick;
+window.L = L;

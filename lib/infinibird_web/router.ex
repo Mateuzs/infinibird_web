@@ -19,6 +19,7 @@ defmodule InfinibirdWeb.Router do
     get "/", PageController, :index
     get "/login", LoginController, :index
     get "/charts", ChartsController, :index
+    get "/map", MapController, :index
   end
 
   # Other scopes may use custom stacks.

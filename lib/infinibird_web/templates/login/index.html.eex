@@ -1,6 +1,3 @@
-
-<div class="charts-container flex-d justify-content-center align-items-center align-self-center
-    ">
-
-    <div class="description-block"><h1> Login Component will be delivered in the next app version (v0.2.0)</h1></div>
-                        </div>
+<div class="login-container">
+  Login Component will be delivered in the next app version (v0.3.0)
+</div>
