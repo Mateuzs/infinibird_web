@@ -1,7 +1,7 @@
 
 
-    <div class="description-block"><h1> Sample charts generated with data
-            fetched from GenServer</h1></div>
+    <div class="description-block"><h2> Sample charts generated with data
+            fetched from GenServer</h2></div>
 <ul class="charts-container">
         <li class="chart "> <%= raw Chartkick.pie_chart pie_chart_data(@conn) %> </li>
 

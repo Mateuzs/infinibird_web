@@ -25,7 +25,7 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-# Jason for parsing dat in Chartkick
+# Jason for parsing data in Chartkick
 config :chartkick, json_serializer: Jason
 
 # Import environment specific config. This must remain at the bottom
