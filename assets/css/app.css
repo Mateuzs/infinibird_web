@@ -172,14 +172,15 @@ html {
 
 .login-container {
   background: #000000;
-  width: 50%;
-  height: 150px;  
+  width: 30%;
+  min-width: 300px;
   display: flex;
+  flex-direction: column;
   align-content: center;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 1em;
+  font-size: 1.2em;
   color: #0cdaf5;
   padding: 1vh;
   border-radius: 8px;
@@ -187,6 +188,23 @@ html {
   margin: 12vh;
   padding: 10px;
 }
+.alert-message{
+  margin-bottom: 20px;
+  height: 20px;
+  width: 100%;
+  padding:5px;
+  font-size: 1.1em;
+  color: rgb(211, 4, 4);
+}
+
+.control-label, control-form{
+  font-size: 1.2em;
+}
+
+.login-message{
+  margin: 10px;
+}
+
 
 
 /* ***** image ****** */

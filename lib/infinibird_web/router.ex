@@ -9,6 +9,10 @@ defmodule InfinibirdWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :authenticate do
+    plug InfinibirdWeb.Plugs.Authenticate
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -18,8 +22,14 @@ defmodule InfinibirdWeb.Router do
 
     get "/", PageController, :index
     get "/login", LoginController, :index
+    post "/login", LoginController, :login
+    post "/logout", LoginController, :logout
     get "/charts", ChartsController, :index
     get "/map", MapController, :index
+  end
+
+  scope "/", InfinibirdWeb do
+    pipe_through :authenticate
   end
 
   # Other scopes may use custom stacks.
