@@ -36,19 +36,13 @@ defmodule Infinibird.Auth.User do
     end
   end
 
+  def signed_in?(conn) do
+    current_user_token = Plug.Conn.get_session(conn, :current_user_token)
+
+    !!current_user_token
+  end
+
   def sign_out(conn) do
-    case AuthService.get_auth_token(conn) do
-      {:ok, token} ->
-        case conn.assigns[:auth] do
-          current_token when current_token === token ->
-            conn
-
-          error ->
-            error
-        end
-
-      error ->
-        error
-    end
+    Plug.Conn.configure_session(conn, drop: true)
   end
 end

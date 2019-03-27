@@ -1,4 +1,4 @@
-defmodule InfinibirdWeb.PageController do
+defmodule InfinibirdWeb.HomeController do
   use InfinibirdWeb, :controller
 
   def index(conn, _params) do

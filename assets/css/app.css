@@ -205,7 +205,12 @@ html {
   margin: 10px;
 }
 
-
+.sign-info{
+  color: #0cdaf5;
+  font-size: 1.1em;
+  margin-right: 5px;
+  align-self: center;
+}
 
 /* ***** image ****** */
 

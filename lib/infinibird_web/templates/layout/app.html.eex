@@ -37,7 +37,13 @@
                   <i class="fas fa-fire-alt"></i>
                   <h2> Infinibird</h2>
                 </div>
+                
                 <div class="header-child">
+                <div class="sign-info">
+                  <%= if Infinibird.Auth.User.signed_in?(@conn) do %>
+                    User signed in! 
+                  <% end %>
+                </div>
                   <div class="btn-wraper">
 
                     <%= link"Home" ,
@@ -73,7 +79,7 @@
           <%= render(@view_module, @view_template, assigns) %>
         </div>
         <div class="footer">
-          <h5>Proudly crafted by Mateusz (v0.3.0)</h5>
+          <h5>Proudly crafted by Mateusz (v0.3.1)</h5>
         </div>
       </div> 
     </body>  

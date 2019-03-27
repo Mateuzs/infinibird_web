@@ -1,8 +1,10 @@
 <div class="login-container">
- <%= if @token == nil do %>
-  <%= form_for @changeset, "/login", fn f -> %>
+ <%= if !@logged_in do %>
+  <%= form_for @conn, Routes.login_path(@conn, :create), fn f -> %>
     
     <p class="alert-message" role="alert"><%= get_flash(@conn, :error) %></p>
+    <p class="alert-message" role="alert"><%= get_flash(@conn, :info) %></p>
+
     <div class="form-group">
       <%= label f, :user_secret_key, class: "control-label" %>
       <%= password_input f, :key, class: "form-control" %>
@@ -16,6 +18,6 @@
   <div class="login-message">
   <h3>Hello user :) You've just logged in!</h3>
   </div>
-    <%= link "Logout", to: "/logout", method: :post, class: "nvb-btn" %>
+    <%= link "Logout", to: Routes.login_path(@conn, :delete), method: :post, class: "nvb-btn" %>
 <% end %>
 </div>

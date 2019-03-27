@@ -1,32 +1,29 @@
 defmodule InfinibirdWeb.LoginController do
   use InfinibirdWeb, :controller
-  alias Infinibird.Auth.{AuthService, User}
+  alias Infinibird.Auth.User
 
   def index(conn, _params) do
-    {_status, token} = AuthService.get_auth_token(conn)
-    changeset = User.changeset(%User{})
-    render(conn, "index.html", changeset: changeset, token: token)
+    logged_in = User.signed_in?(conn)
+    render(conn, "index.html", logged_in: logged_in)
   end
 
-  def login(conn, %{"user" => %{"key" => key}}) do
-    User.sign_in(key)
-    |> login_reply(conn)
+  def create(conn, credentials) do
+    case User.sign_in(Map.get(credentials, "key")) do
+      {:ok, token} ->
+        conn
+        |> put_session(:current_user_token, token)
+        |> put_flash(:info, "You have successfully signed in!")
+        |> redirect(to: "/login")
+
+      {:error, _error} ->
+        conn
+        |> put_flash(:error, "User key is incorrect")
+        |> redirect(to: "/login")
+    end
   end
 
-  defp login_reply({:error, _error}, conn) do
-    conn
-    |> put_flash(:error, "User key is incorrect")
-    |> redirect(to: "/login")
-  end
-
-  defp login_reply({:ok, token}, conn) do
-    redirect(conn, to: "/login", message: token)
-  end
-
-  def logout(conn, _) do
+  def delete(conn, _params) do
     User.sign_out(conn)
-    |> assign(:signed_in, true)
-    |> assign(:auth, nil)
-    |> redirect(to: "/login")
+    |> redirect(to: "/")
   end
 end

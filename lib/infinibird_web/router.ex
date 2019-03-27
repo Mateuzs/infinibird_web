@@ -20,10 +20,10 @@ defmodule InfinibirdWeb.Router do
   scope "/", InfinibirdWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", HomeController, :index
     get "/login", LoginController, :index
-    post "/login", LoginController, :login
-    post "/logout", LoginController, :logout
+    post "/login", LoginController, :create
+    post "/logout", LoginController, :delete
     get "/charts", ChartsController, :index
     get "/map", MapController, :index
   end
