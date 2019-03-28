@@ -4,7 +4,7 @@ defmodule Infinibird.MixProject do
   def project do
     [
       app: :infinibird,
-      version: "0.3.0",
+      version: "0.3.2",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -45,9 +45,9 @@ defmodule Infinibird.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:chartkick, "~> 0.3.0", override: true},
       {:infinibird_engine, path: "./infinibird_engine"},
-      {:distillery, "~>1.5", runtime: false},
-      {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 1.0"}
+      {:distillery, "~>2.0", runtime: false},
+      {:comeonin, "~> 5.1"},
+      {:argon2_elixir, "~> 2.0"}
     ]
   end
 

@@ -4,18 +4,26 @@ defmodule Infinibird.Auth.AuthService do
   # :crypto.strong_rand_bytes(30)
   # |> Base.url_encode64
   # |> binary_part(0, 30)
-  @seed "user salt"
+  @salt "a5G6A24zx5c"
   @secret "faSlfzE4g8k7kTxvFAgeBvAVA0OR1vkPbTi8mZ5m"
+  @encrypted_key Argon2.hash_pwd_salt("12345678")
+
+  def authorise(key) do
+    case Argon2.verify_pass(key, @encrypted_key) do
+      true -> :authorised
+      false -> :unauthorised
+    end
+  end
 
   @spec generate_token(any()) :: any()
   def generate_token(id) do
-    Phoenix.Token.sign(@secret, @seed, id, max_age: 86400)
+    Phoenix.Token.sign(@secret, @salt, id, max_age: 86400)
   end
 
   @spec verify_token(nil | binary()) ::
           {:error, :expired | :invalid | :missing} | {:ok, nil | binary()}
   def verify_token(token) do
-    case Phoenix.Token.verify(@secret, @seed, token, max_age: 86400) do
+    case Phoenix.Token.verify(@secret, @salt, token, max_age: 86400) do
       {:ok, _id} -> {:ok, token}
       error -> error
     end

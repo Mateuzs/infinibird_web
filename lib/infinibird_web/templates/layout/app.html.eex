@@ -40,7 +40,7 @@
                 
                 <div class="header-child">
                 <div class="sign-info">
-                  <%= if Infinibird.Auth.User.signed_in?(@conn) do %>
+                  <%= if Infinibird.Auth.User.authenticate_user(@conn) do %>
                     User signed in! 
                   <% end %>
                 </div>
@@ -79,7 +79,7 @@
           <%= render(@view_module, @view_template, assigns) %>
         </div>
         <div class="footer">
-          <h5>Proudly crafted by Mateusz (v0.3.1)</h5>
+          <h5>Proudly crafted by Mateusz (v0.3.2)</h5>
         </div>
       </div> 
     </body>  

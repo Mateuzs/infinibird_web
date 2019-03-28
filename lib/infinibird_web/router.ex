@@ -7,10 +7,17 @@ defmodule InfinibirdWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug InfinibirdWeb.Plugs.SetCurrentUser
   end
 
-  pipeline :authenticate do
-    plug InfinibirdWeb.Plugs.Authenticate
+  pipeline :auth do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_flash
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+    plug InfinibirdWeb.Plugs.SetCurrentUser
+    plug InfinibirdWeb.Plugs.AuthenticateUser
   end
 
   pipeline :api do
@@ -24,12 +31,13 @@ defmodule InfinibirdWeb.Router do
     get "/login", LoginController, :index
     post "/login", LoginController, :create
     post "/logout", LoginController, :delete
-    get "/charts", ChartsController, :index
-    get "/map", MapController, :index
   end
 
   scope "/", InfinibirdWeb do
-    pipe_through :authenticate
+    pipe_through :auth
+
+    get "/charts", ChartsController, :index
+    get "/map", MapController, :index
   end
 
   # Other scopes may use custom stacks.

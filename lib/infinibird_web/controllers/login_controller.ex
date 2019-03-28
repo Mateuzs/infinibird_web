@@ -3,7 +3,7 @@ defmodule InfinibirdWeb.LoginController do
   alias Infinibird.Auth.User
 
   def index(conn, _params) do
-    logged_in = User.signed_in?(conn)
+    logged_in = User.authenticate_user(conn)
     render(conn, "index.html", logged_in: logged_in)
   end
 

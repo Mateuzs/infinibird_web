@@ -17,7 +17,6 @@ html {
   height: 100%;
 }
 
-
 /********** header ***********/
 
 .header {
@@ -28,14 +27,14 @@ html {
   flex-wrap: nowrap;
   align-content: center;
 }
-.header-child{
+.header-child {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
   justify-content: flex-end;
 }
 
-.logo{
+.logo {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -43,7 +42,7 @@ html {
   padding: 0;
 }
 
-.btn-wraper{
+.btn-wraper {
   display: flex;
   align-content: center;
   justify-content: flex-end;
@@ -53,24 +52,25 @@ html {
 .title {
   display: flex;
   color: #0cdaf5;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 2em;
   margin-top: 5px;
   margin-bottom: 5px;
   transition: 0.5s;
 }
-.fas{
+.fas {
   margin-right: 5px;
 }
-.title:hover{
+.title:hover {
   color: #ff8a58;
   transition: 0.5s;
 }
 
 .nvb-btn {
   text-align: center;
-  margin:  5px;
-  padding:  5px 3px 5px 3px;
+  margin: 5px;
+  padding: 5px 3px 5px 3px;
   border-radius: 5px;
   width: 70px;
   font-size: 1em;
@@ -78,7 +78,6 @@ html {
   color: #0cdaf5;
   background: transparent;
   transition: 0.4s;
-  
 }
 .nvb-btn:hover {
   border: solid 1px #ff8a58;
@@ -94,12 +93,11 @@ html {
   transition: 0.4s;
 }
 
-
 /********** conatiner ***********/
 
 .container {
   flex: 1 0 auto;
-  max-width:100%;
+  max-width: 100%;
   margin: 0;
   padding: 0;
   display: flex;
@@ -111,7 +109,6 @@ html {
 .container::-webkit-scrollbar {
   display: none;
 }
-
 
 /********** footer ***********/
 
@@ -125,13 +122,12 @@ html {
   font-size: small;
   text-align: center;
   flex-shrink: 0;
-  transition:0.5s;
+  transition: 0.5s;
 }
-.footer:hover{
+.footer:hover {
   color: #ffa958;
-  transition:0.5s;
+  transition: 0.5s;
 }
-
 
 /* ******* Charts ********** */
 
@@ -167,7 +163,6 @@ html {
   padding: 0;
 }
 
-
 /* ****** login ******* */
 
 .login-container {
@@ -188,24 +183,32 @@ html {
   margin: 12vh;
   padding: 10px;
 }
-.alert-message{
+.alert-message {
   margin-bottom: 20px;
   height: 20px;
   width: 100%;
-  padding:5px;
+  padding: 5px;
+
   font-size: 1.1em;
   color: rgb(211, 4, 4);
 }
 
-.control-label, control-form{
+.control-label,
+control-form {
   font-size: 1.2em;
 }
 
-.login-message{
-  margin: 10px;
+form {
+  width: 100%;
 }
 
-.sign-info{
+.form-control {
+  width: 80%;
+  display: inline;
+  text-align: center;
+}
+
+.sign-info {
   color: #0cdaf5;
   font-size: 1.1em;
   margin-right: 5px;
@@ -222,15 +225,15 @@ html {
   font-size: 40vw;
   transition: 0.5s;
 }
-.bird:hover{
+.bird:hover {
   color: #ff8a58;
   transition: 0.5s;
 }
 
 /* ******* map ******** */
 
-#map{
-    flex: 1 1 0;
-    width: 100%;
-    z-index: 0;
+#map {
+  flex: 1 1 0;
+  width: 100%;
+  z-index: 0;
 }

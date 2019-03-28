@@ -5,8 +5,6 @@ defmodule Infinibird.Auth.User do
   # alias Comeonin.Bcrypt
   alias Infinibird.Auth.AuthService
 
-  @secret_key "12345678"
-
   schema "users" do
     field :email, :string
     field :encrypted_password, :string
@@ -26,17 +24,17 @@ defmodule Infinibird.Auth.User do
 
   @spec sign_in(any()) :: any()
   def sign_in(key) do
-    case key do
-      @secret_key ->
+    case AuthService.authorise(key) do
+      :authorised ->
         token = AuthService.generate_token(key)
         {:ok, token}
 
-      _ ->
+      :unauthorised ->
         {:error, :wrong_key}
     end
   end
 
-  def signed_in?(conn) do
+  def authenticate_user(conn) do
     current_user_token = Plug.Conn.get_session(conn, :current_user_token)
 
     !!current_user_token
