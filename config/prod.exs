@@ -59,7 +59,10 @@ config :logger, level: :info
 # We also recommend setting `force_ssl` in your endpoint, ensuring
 # no data is ever sent via http, always redirecting to https:
 #
+# probably better config, but on gigalixir works only the second one
+# config :infinibird, InfinibirdWeb.Endpoint, force_ssl: [hsts: true]
 config :infinibird, InfinibirdWeb.Endpoint, force_ssl: [rewrite_on: [:x_forwarded_proto]]
+
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
 
@@ -68,10 +71,10 @@ config :infinibird, InfinibirdWeb.Endpoint, force_ssl: [rewrite_on: [:x_forwarde
 # If you are doing OTP releases, you need to instruct Phoenix
 # to start the server for all endpoints:
 #
-# config :phoenix, :serve_endpoints, true
+config :phoenix, :serve_endpoints, true
 #
 # Alternatively, you can configure exactly which server to
-# start per endpoint:
+# start per endpoint:git pu
 #
 #     config :infinibird, InfinibirdWeb.Endpoint, server: true
 #
