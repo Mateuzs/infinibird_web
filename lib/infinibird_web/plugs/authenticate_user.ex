@@ -2,8 +2,6 @@ defmodule InfinibirdWeb.Plugs.AuthenticateUser do
   import Plug.Conn
   import Phoenix.Controller
 
-  alias InfinibirdWeb.Router.Helpers
-
   def init(_params) do
   end
 

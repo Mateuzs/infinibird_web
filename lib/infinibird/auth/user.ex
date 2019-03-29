@@ -26,8 +26,7 @@ defmodule Infinibird.Auth.User do
   def sign_in(key) do
     case AuthService.authorise(key) do
       :authorised ->
-        token = AuthService.generate_token(key)
-        {:ok, token}
+        {:ok, "user_id"}
 
       :unauthorised ->
         {:error, :wrong_key}
@@ -35,7 +34,7 @@ defmodule Infinibird.Auth.User do
   end
 
   def authenticate_user(conn) do
-    current_user_token = Plug.Conn.get_session(conn, :current_user_token)
+    current_user_token = Plug.Conn.get_session(conn, :current_user_id)
 
     !!current_user_token
   end
