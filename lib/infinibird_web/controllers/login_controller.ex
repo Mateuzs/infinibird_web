@@ -9,9 +9,9 @@ defmodule InfinibirdWeb.LoginController do
 
   def create(conn, credentials) do
     case User.sign_in(Map.get(credentials, "key")) do
-      {:ok, token} ->
+      {:ok, user_id} ->
         conn
-        |> put_session(:current_user_token, token)
+        |> put_session(:current_user_id, user_id)
         |> put_flash(:info, "You have successfully signed in!")
         |> redirect(to: "/login")
 

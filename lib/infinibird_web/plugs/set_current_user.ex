@@ -5,7 +5,7 @@ defmodule InfinibirdWeb.Plugs.SetCurrentUser do
   end
 
   def call(conn, _params) do
-    current_user = Plug.Conn.get_session(conn, :current_user_token)
+    current_user = Plug.Conn.get_session(conn, :current_user_id)
 
     case current_user do
       nil ->
