@@ -40,7 +40,8 @@ defmodule InfinibirdWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_infinibird_key",
-    signing_salt: "TzbyWnYd"
+    signing_salt: "TzbyWnYd",
+    max_age: 24 * 60 * 60
 
   plug InfinibirdWeb.Router
 end
