@@ -13,6 +13,13 @@ defmodule InfinibirdEngine.Server do
     |> reply_success(:ok, state)
   end
 
+  def handle_call({:get_summary_data}, _from, state) do
+    data = DataProvider.get_summary_mock_data()
+    bson = Bson.encode(data)
+    IO.inspect(bson)
+    reply_success(data, :ok, state)
+  end
+
   defp reply_success(data, reply, state) do
     {:reply, {reply, data}, state}
   end

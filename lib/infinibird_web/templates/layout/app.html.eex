@@ -33,26 +33,28 @@
     <body class="body">
       <div role="main" class="main">
         <header  class="header navbar navbar-dark">
+               <div class="header-child">
                 <div class="title">
                   <i class="fas fa-fire-alt"></i>
-                  <h2> Infinibird</h2>
-                </div>
-                
-                <div class="header-child">
-                <div class="sign-info">
+                  <div class="infinibird"> Infinibird</div>
+                  <div class="sign-info">
                   <%= if Infinibird.Auth.User.authenticate_user(@conn) do %>
-                    User signed in! 
+                    zalogowano <i class="far fa-check-circle"></i>
                   <% end %>
+                  </div>
                 </div>
-                  <div class="btn-wraper">
+                </div>
 
+
+                <div class="header-child">
+                  <div class="btn-wraper">
                     <%= link"Home" ,
                     method: :get,
                     to: "/" ,
                     class: "nvb-btn  " ,
                     data: []
                   %>
-                  <%= link"Charts!" ,
+                  <%= link"Wykresy" ,
                     method: :get,
                     to: "/charts" ,
                     class: " nvb-btn " ,
@@ -60,18 +62,27 @@
                   %>
                   </div>
                   <div class="btn-wraper">
-                  <%= link"Map" ,
+                  <%= link"Przejazdy" ,
                         method: :get,
                         to: "/map" ,
-                        class: " nvb-btn" ,
+                        class: "nvb-btn" ,
                         data: []
                   %>
-                        <%= link"Login" ,
+                  <%= if Infinibird.Auth.User.authenticate_user(@conn) do %>
+                    <%= link"Wyloguj" ,
+                          method: :post,
+                          to: Routes.login_path(@conn, :delete),
+                          class: " nvb-btn",
+                          data: []
+                    %>
+                  <% else %>
+                    <%= link"Zaloguj" ,
                           method: :get,
-                          to: "/login" ,
+                          to: "/login",
                           class: " nvb-btn" ,
                           data: []
-                          %>
+                    %>
+                  <% end %>     
                   </div>
                 </div>
         </header>

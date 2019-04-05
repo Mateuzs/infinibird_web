@@ -10,7 +10,6 @@ defmodule InfinibirdWeb.Plugs.AuthenticateUser do
       conn
     else
       conn
-      |> put_flash(:error, "You need to sign in first")
       |> redirect(to: "/login")
       |> halt()
     end

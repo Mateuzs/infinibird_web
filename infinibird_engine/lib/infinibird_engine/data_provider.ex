@@ -84,4 +84,12 @@ defmodule InfinibirdEngine.DataProvider do
       ],
       column_chart_data: [[0, 32], [1, 46], [2, 28], [3, 21], [4, 20], [5, 13], [6, 27]]
     }
+
+  def get_summary_mock_data(),
+    do: %{
+      amount_of_km: 12583,
+      number_of_trips: 218,
+      average_speed: 67,
+      safety_index: "89/100"
+    }
 end
