@@ -79,7 +79,7 @@
           <%= render(@view_module, @view_template, assigns) %>
         </div>
         <div class="footer">
-          <h5>Proudly crafted by Mateusz (v0.3.2)</h5>
+          <h5>Proudly crafted by Mateusz (v0.3.3)</h5>
         </div>
       </div> 
     </body>  

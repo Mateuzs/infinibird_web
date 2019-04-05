@@ -4,8 +4,8 @@ defmodule InfinibirdEngine.MixProject do
   def project do
     [
       app: :infinibird_engine,
-      version: "0.3.2",
-      elixir: "~> 1.5",
+      version: "0.3.3",
+      elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
