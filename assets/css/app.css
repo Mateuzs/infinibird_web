@@ -77,20 +77,17 @@ html {
   border: solid 1px #0cdaf5;
   color: #0cdaf5;
   background: transparent;
-  transition: 0.4s;
 }
 .nvb-btn:hover {
   border: solid 1px #ff8a58;
   color: #ff8a58;
   background: black;
-  transition: 0.4s;
   text-decoration: none;
 }
 .nvb-btn:active {
-  border: solid 1px #ff4747;
-  color: #ff4747;
+  border: solid 1px #ec5a1b;
+  color: #ec5a1b;
   background: black;
-  transition: 0.4s;
 }
 
 /********** conatiner ***********/
