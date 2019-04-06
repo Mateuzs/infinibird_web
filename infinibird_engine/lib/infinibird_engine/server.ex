@@ -2,7 +2,6 @@ defmodule InfinibirdEngine.Server do
   use GenServer
   alias InfinibirdEngine.{DataProvider, Constants}
   @infinibird_server Constants.infinibird_server()
-
   def start_link(state),
     do: GenServer.start_link(__MODULE__, state, name: @infinibird_server)
 
@@ -16,13 +15,13 @@ defmodule InfinibirdEngine.Server do
   end
 
   def handle_call({:get_summary_data}, _from, state) do
-    File.read!(__DIR__ <> "/summary_data.bson")
+    File.read!(File.cwd!() <> "/priv/static/summary_data.bson")
     |> decode_bson_data()
     |> reply_success(:ok, state)
   end
 
   def handle_call({:get_trip_data}, _from, state) do
-    File.read!(__DIR__ <> "/trip_data.bson")
+    File.read!(File.cwd!() <> "/priv/static/trip_data.bson")
     |> decode_bson_data()
     |> reply_success(:ok, state)
   end
