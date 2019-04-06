@@ -15,13 +15,13 @@ defmodule InfinibirdEngine.Server do
   end
 
   def handle_call({:get_summary_data}, _from, state) do
-    File.read!(File.cwd!() <> "/priv/static/summary_data.bson")
+    DataProvider.get_summary_mock_data()
     |> decode_bson_data()
     |> reply_success(:ok, state)
   end
 
   def handle_call({:get_trip_data}, _from, state) do
-    File.read!(File.cwd!() <> "/priv/static/trip_data.bson")
+    DataProvider.get_trip_mock_data()
     |> decode_bson_data()
     |> reply_success(:ok, state)
   end

@@ -5,7 +5,6 @@ defmodule InfinibirdWeb.MapController do
   @spec index(Plug.Conn.t(), any()) :: Plug.Conn.t()
   def index(conn, _params) do
     {:ok, data} = Api.get_trip_data()
-    IO.inspect(data)
 
     render(conn, "index.html", trip_data: data)
   end
