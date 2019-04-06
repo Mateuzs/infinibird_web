@@ -30,6 +30,7 @@
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="<%= Routes.static_path(@conn,"/js/app.js") %>"></script>
     </head>
+    
     <body class="body">
       <div role="main" class="main">
         <header  class="header navbar navbar-dark">
@@ -46,52 +47,57 @@
                 </div>
 
 
-                <div class="header-child">
-                  <div class="btn-wraper">
-                    <%= link"Home" ,
-                    method: :get,
-                    to: "/" ,
-                    class: "nvb-btn  " ,
-                    data: []
-                  %>
-                  <%= link"Wykresy" ,
-                    method: :get,
-                    to: "/charts" ,
-                    class: " nvb-btn " ,
-                    data: []
-                  %>
-                  </div>
-                  <div class="btn-wraper">
-                  <%= link"Przejazdy" ,
-                        method: :get,
-                        to: "/map" ,
-                        class: "nvb-btn" ,
-                        data: []
-                  %>
+                <div class="header-child">                
                   <%= if Infinibird.Auth.User.authenticate_user(@conn) do %>
-                    <%= link"Wyloguj" ,
-                          method: :post,
-                          to: Routes.login_path(@conn, :delete),
-                          class: " nvb-btn",
-                          data: []
-                    %>
+                    <div class="btn-wraper">
+                      <%= link"Home" ,
+                        method: :get,
+                        to: "/" ,
+                        class: "nvb-btn  " ,
+                        data: []
+                      %>
+                      <%= link"Wykresy" ,
+                        method: :get,
+                        to: "/charts" ,
+                        class: " nvb-btn " ,
+                        data: []
+                      %>
+                    </div>
+                    <div class="btn-wraper">
+                      <%= link"Przejazdy" ,
+                            method: :get,
+                            to: "/map" ,
+                            class: "nvb-btn" ,
+                            data: []
+                      %>
+                      <%= link"Wyloguj" ,
+                            method: :post,
+                            to: Routes.login_path(@conn, :delete),
+                            class: " nvb-btn",
+                            data: []
+                      %>
+                    </div>
                   <% else %>
-                    <%= link"Zaloguj" ,
-                          method: :get,
-                          to: "/login",
-                          class: " nvb-btn" ,
-                          data: []
-                    %>
+                    <div class="btn-wraper">
+                      <%= link"Zaloguj" ,
+                        method: :get,
+                        to: "/login",
+                        class: " nvb-btn" ,
+                        data: []
+                      %>
+                    </div>
                   <% end %>     
-                  </div>
                 </div>
         </header>
+
         <div class="container">
           <%= render(@view_module, @view_template, assigns) %>
         </div>
+
         <div class="footer">
           <h5>Proudly crafted by Mateusz (v0.3.3)</h5>
         </div>
+        
       </div> 
     </body>  
   </html>

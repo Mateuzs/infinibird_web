@@ -1,3 +1,11 @@
 
-  <div id="map"><script> integrateMap() </script></div>
-        
+  <div class="trips-container">
+    <div class="trips-map">
+    
+    </div>
+    <div class="trips-list">
+       <%= for trip <- trips(@conn) do %>
+          <div class="trip"><%= trip %></div>
+       <% end %>
+    </div>
+  </div>

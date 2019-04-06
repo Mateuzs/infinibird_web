@@ -1,3 +1,8 @@
+@import url('charts.css');
+@import url('home.css');
+@import url('login.css');
+@import url('trips.css');
+
 /* Main structure */
 
 body,
@@ -18,6 +23,7 @@ html {
 }
 
 /********** header ***********/
+
 
 .header {
   background: linear-gradient(180deg, #18182a, black);
@@ -121,7 +127,6 @@ html {
   background: black;
   outline: none;
 }
-
 /********** conatiner ***********/
 
 .container {
@@ -138,52 +143,6 @@ html {
 .container::-webkit-scrollbar {
   display: none;
 }
-
-/********** home ***********/
-
-.blocks-container {
-  background: transparent;
-  margin-top: 50px;
-  padding: 0;
-  width: 100%;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex-grow: 1;
-  margin-bottom: 7em;
-}
-
-.block{
-  color: #0cdaf5;
-  background: black;
-  flex-wrap: wrap;
-  display: flex;
-  border-radius: 8px;
-  border: #0cdaf5 solid 2px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2em;
-  margin: 10px;
-  max-width: 600px;
-  height: 300px;
-  width: 99%;
-  justify-content: center;
-  align-content: center;
-  text-align: center;
-}
-
-.home_info{
-  color: #ff9853;
-  font-size: 2em;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  justify-content: center;
-}
-
 
 /********** footer ***********/
 
@@ -205,106 +164,4 @@ html {
   
 }
 
-/* ******* Charts ********** */
-
-.description-block {
-  color: #0cdaf5;
-  font-size: 10px;
-  margin-top: 5vh;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2em;
-  margin-bottom: 1em;
-  text-align: center;
-  
-}
-
-.charts-container {
-  background: transparent;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex-grow: 1;
-  margin-bottom: 7em;
-}
-
-.chart {
-  display: flex;
-  margin: 1vh;
-  max-width: 540px;
-  width: 100%;
-  padding: 0;
-}
-
-/* ****** login ******* */
-
-.login-container {
-  background: #000000;
-  width: 30%;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 1.2em;
-  color: #0cdaf5;
-  padding: 1vh;
-  border-radius: 8px;
-  border: #0cdaf5 solid 2px;
-  margin: 12vh;
-  padding: 10px;
-}
-.alert-message {
-  margin-bottom: 20px;
-  height: 20px;
-  width: 100%;
-  padding: 5px;
-
-  font-size: 1.1em;
-  color: rgb(211, 4, 4);
-}
-
-.control-label,
-control-form {
-  font-size: 1.2em;
-}
-
-form {
-  width: 100%;
-}
-
-.form-control {
-  display: inline;
-  text-align: center;
-}
-
-
-/* ***** image ****** */
-
-.bird {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  color: #0cdaf5;
-  font-size: 40vw;
-  transition: 0.5s;
-}
-.bird:hover {
-  color: #ff8a58;
-  transition: 0.5s;
-}
-
-/* ******* map ******** */
-
-#map {
-  flex: 1 1 0;
-  width: 100%;
-  z-index: 0;
-}
 
