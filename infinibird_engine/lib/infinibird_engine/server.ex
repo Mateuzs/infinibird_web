@@ -16,13 +16,13 @@ defmodule InfinibirdEngine.Server do
   end
 
   def handle_call({:get_summary_data}, _from, state) do
-    File.read!(Path.expand('infinibird_engine/priv/summary_data.bson') |> Path.absname())
+    File.read!(__DIR__ <> "/summary_data.bson")
     |> decode_bson_data()
     |> reply_success(:ok, state)
   end
 
   def handle_call({:get_trip_data}, _from, state) do
-    File.read!(Path.expand('infinibird_engine/priv/trip_data.bson') |> Path.absname())
+    File.read!(__DIR__ <> "/trip_data.bson")
     |> decode_bson_data()
     |> reply_success(:ok, state)
   end
