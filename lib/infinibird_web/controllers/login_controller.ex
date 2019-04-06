@@ -3,8 +3,14 @@ defmodule InfinibirdWeb.LoginController do
   alias Infinibird.Auth.User
 
   def index(conn, _params) do
-    logged_in = User.authenticate_user(conn)
-    render(conn, "index.html", logged_in: logged_in)
+    case User.authenticate_user(conn) do
+      true ->
+        redirect(conn, to: "/")
+
+      false ->
+        logged_in = User.authenticate_user(conn)
+        render(conn, "index.html", logged_in: logged_in)
+    end
   end
 
   def create(conn, credentials) do
@@ -12,12 +18,11 @@ defmodule InfinibirdWeb.LoginController do
       {:ok, user_id} ->
         conn
         |> put_session(:current_user_id, user_id)
-        |> put_flash(:info, "You have successfully signed in!")
-        |> redirect(to: "/login")
+        |> redirect(to: "/")
 
       {:error, _error} ->
         conn
-        |> put_flash(:error, "User key is incorrect")
+        |> put_flash(:error, "Nieprawidłowy token!")
         |> redirect(to: "/login")
     end
   end

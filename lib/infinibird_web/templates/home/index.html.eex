@@ -1,1 +1,36 @@
-<div class="bird"> <i class="fab fa-phoenix-framework"></i></div>
+<div class="blocks-container">
+
+        <div class="block">
+            Przejechano 
+            <%= if amount_of_km(@conn) !== nil do %>
+                <p class="home_info" ><%= amount_of_km(@conn) %> km </p> 
+            <% else %>
+                <p class="home_info" >brak danych</p> 
+            <% end  %>
+         </div>
+
+        <div class="block">
+            Liczba przejazdów 
+            <%= if number_of_trips(@conn) !== nil do %>
+                <p class="home_info" ><%= number_of_trips(@conn) %>  </p> 
+            <% else %>
+                <p class="home_info" >brak danych</p> 
+            <% end  %>
+
+         </div><div class="block">
+            Średnia prędkość 
+            <%= if average_speed(@conn) !== nil do %>
+                <p class="home_info" ><%= average_speed(@conn) %> km/h </p> 
+            <% else %>
+                <p class="home_info" >brak danych</p> 
+            <% end  %>
+
+         </div><div class="block">
+            Indeks bezpieczeństwa 
+            <%= if safety_index(@conn) !== nil do %>
+                <p class="home_info" ><%= safety_index(@conn) %> </p> 
+            <% else %>
+                <p class="home_info" >brak danych</p> 
+            <% end  %>
+         </div>
+</div>

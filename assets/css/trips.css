@@ -1,0 +1,77 @@
+
+#map {
+    width: 100%;
+    height: 100%;
+  }
+  
+.trips-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.trips-map{
+    flex: 4 0;
+    background: #000000;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2em;
+    color: #0cdaf5;
+    border-radius: 8px;
+    display: flex;
+}
+
+.trips-list{
+    flex: 1 0;
+    background: #000000;
+    margin: 10px;
+    align-content: center;
+    align-self: stretch;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.2em;
+    color: #0cdaf5;
+    border-radius: 8px;
+    border: #0cdaf5 solid 2px;
+}
+
+.trip{
+    background: #000000;
+    border: none;
+    color: #0cdaf5;
+    width: 100%;
+    outline: none;
+    border-radius: 8px;
+    height: 5vh;
+    border: solid 2px transparent;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    display: flex; 
+    padding-top: 0.8vh;
+}
+
+.trip:hover{
+    padding:0;
+    padding-top: 0.8vh;
+    outline: none;
+    background: linear-gradient(#0a2a6e, #050d1f);
+}
+
+.trip:active{
+    background: linear-gradient(0deg, #0a2a6e, #050d1f);
+    padding:0;
+    padding-top: 0.8vh;
+    outline: none;
+}
+
+.trip:focus{
+    background: linear-gradient(0deg, #0a2a6e, #050d1f);
+    padding:0;
+    padding-top: 0.8vh;
+    outline: none;
+}

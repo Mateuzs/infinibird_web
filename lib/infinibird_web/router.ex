@@ -27,7 +27,6 @@ defmodule InfinibirdWeb.Router do
   scope "/", InfinibirdWeb do
     pipe_through :browser
 
-    get "/", HomeController, :index
     get "/login", LoginController, :index
     post "/login", LoginController, :create
     post "/logout", LoginController, :delete
@@ -36,6 +35,7 @@ defmodule InfinibirdWeb.Router do
   scope "/", InfinibirdWeb do
     pipe_through :auth
 
+    get "/", HomeController, :index
     get "/charts", ChartsController, :index
     get "/map", MapController, :index
   end

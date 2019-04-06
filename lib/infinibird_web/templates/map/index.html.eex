@@ -1,3 +1,16 @@
 
-  <div id="map"><script> integrateMap() </script></div>
-        
+  <div class="trips-container">
+
+    <div class="trips-list">
+       <%= for {key,name} <- trips(@conn) do %>
+          <div tabindex="1" class="trip" onclick="drawTrip(<%= get_trip_data(@conn, key) %> )""><%= name %></div>
+       <% end %>
+    </div>
+    <div class="trips-map">
+      <div id="map">
+        <script> integrateMap() </script>
+      </div>
+    </div>
+  </div>
+
+      
