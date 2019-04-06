@@ -7,6 +7,6 @@ defmodule InfinibirdWeb.MapController do
     {:ok, data} = Api.get_trip_data()
     IO.inspect(data)
 
-    render(conn, "index.html", trip_data: Jason.encode!(data))
+    render(conn, "index.html", trip_data: data)
   end
 end

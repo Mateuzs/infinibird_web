@@ -27,7 +27,7 @@
   .chart {
     display: flex;
     margin: 1vh;
-    max-width: 540px;
-    width: 100%;
+    width: 90%;
+    min-width: 500px;
     padding: 0;
   }

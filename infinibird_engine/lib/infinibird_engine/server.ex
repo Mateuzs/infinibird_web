@@ -16,21 +16,14 @@ defmodule InfinibirdEngine.Server do
   end
 
   def handle_call({:get_summary_data}, _from, state) do
-    file =
-      File.read!(Path.expand('infinibird_engine/priv/summary_data.bson') |> Path.absname())
-      |> decode_bson_data()
-      |> reply_success(:ok, state)
+    File.read!(Path.expand('infinibird_engine/priv/summary_data.bson') |> Path.absname())
+    |> decode_bson_data()
+    |> reply_success(:ok, state)
   end
 
   def handle_call({:get_trip_data}, _from, state) do
-    data =
-      File.read!(Path.expand('infinibird_engine/priv/trip_data.bson') |> Path.absname())
-      |> decode_bson_data()
-
-    data
-    |> Map.keys()
-    |> Enum.sort()
-    |> Enum.map(&Map.get(data, &1))
+    File.read!(Path.expand('infinibird_engine/priv/trip_data.bson') |> Path.absname())
+    |> decode_bson_data()
     |> reply_success(:ok, state)
   end
 
@@ -42,7 +35,7 @@ defmodule InfinibirdEngine.Server do
         IO.puts(error)
         %{}
 
-      %Bson.Decoder.Error{what: :buffer_not_empty, acc: doc, rest: rest} = error ->
+      %Bson.Decoder.Error{what: :buffer_not_empty, acc: _doc, rest: _rest} = error ->
         IO.puts(error)
         %{}
 

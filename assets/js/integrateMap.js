@@ -16,7 +16,5 @@ export default function integrateMap() {
 
   var marker = L.marker([50.061518, 19.936606]).addTo(mymap);
 
-  marker
-    .bindPopup("<b>Hello world!</b><br>Hello from the middle of Krakow!.")
-    .openPopup();
+  marker.bindPopup("<b>Hello world!</b><br>Hello from the middle of Krakow!.");
 }

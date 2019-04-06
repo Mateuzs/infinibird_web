@@ -20,14 +20,4 @@ defmodule Bson.Mixfile do
 
   defp deps(_), do: []
 
-  defp package do
-    [
-      contributors: ["jerp", "Mateuzs"],
-      licenses: ["MIT"],
-      links: %{
-        "GitHub" => "https://github.com/checkiz/elixir-bson",
-        "Documentation" => "http://hexdocs.pm/bson/"
-      }
-    ]
-  end
 end
