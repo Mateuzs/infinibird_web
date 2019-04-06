@@ -21,6 +21,6 @@ defmodule InfinibirdEngine.MixProject do
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
-    [{:bson, path: "./lib/bson"}]
+    []
   end
 end
