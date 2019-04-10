@@ -32,6 +32,7 @@ html {
   display: flex;
   flex-wrap: nowrap;
   align-content: center;
+  z-index: 10;
 }
 .header-child {
   display: flex;
@@ -149,20 +150,25 @@ html {
 .footer {
   background: linear-gradient(180deg, #0e0e18, black);
   text-align: center;
-  height: 30px;
+  height: 20px;
+  bottom: 0;
   color: #0cdaf5;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1.5em;
-  font-size: small;
+  font-size: 0.8em;
   text-align: center;
   flex-shrink: 0;
   transition: 0.5s;
+  z-index: 10;
+
 }
 .footer:hover {
   color: #ffa958;
   transition: 0.5s;
   
 }
+p{
+  margin:0;
 
+}
 
 
