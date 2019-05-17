@@ -13,8 +13,9 @@ defmodule Bson.Decoder do
 
   defdelegate elist_to_map(elist), to: :maps, as: :from_list
 
-  def elist_to_atom_map(elist),
-    do: elist |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end) |> elist_to_map
+  def elist_to_atom_map(elist) do
+    elist |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end) |> elist_to_map
+  end
 
   def elist_to_hashdict(elist),
     do: elist |> Enum.reduce(%HashDict{}, fn {k, v}, h -> HashDict.put(h, k, v) end)
