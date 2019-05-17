@@ -21,9 +21,11 @@ defmodule InfinibirdEngine.Server do
   end
 
   def handle_call({:get_trip_data}, _from, state) do
-    {:ok, bson_data1} = File.read("static/data/20190202T125015_20190202T142542.bson")
+    {:ok, bson_data1} =
+      File.read("infinibird_engine/lib/data/20190202T125015_20190202T142542.bson")
 
-    {:ok, bson_data2} = File.read("static/data/20190329T170520_20190329T224221.bson")
+    {:ok, bson_data2} =
+      File.read("infinibird_engine/lib/data/20190329T170520_20190329T224221.bson")
 
     data = %{
       trip1: %{
