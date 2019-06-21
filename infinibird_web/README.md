@@ -6,7 +6,7 @@ Users and computed data are stored in DB, ready to be served.
 
 It's build from two main components:
 
-- `infinibird_engine`: backend functionality, genServer, genSupervisor, API, database communication, data computing, etc. separate Elixir app.
+- `infinibird_service`: backend functionality, genServer, genSupervisor, API, database communication, data computing, etc. separate Elixir app.
 - `infinibird_web`: Phoenix app, routing, user session, presentation layer, frontend stuff.
 
 To start the app:

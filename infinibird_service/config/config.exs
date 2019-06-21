@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure your application as:
 #
-#     config :infinibird_engine, key: :value
+#     config :infinibird_service, key: :value
 #
 # and access this configuration in your application as:
 #
-#     Application.get_env(:infinibird_engine, :key)
+#     Application.get_env(:infinibird_service, :key)
 #
 # You can also configure a third-party app:
 #

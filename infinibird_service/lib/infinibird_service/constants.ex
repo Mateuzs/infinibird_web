@@ -1,3 +1,3 @@
-defmodule InfinibirdEngine.Constants do
+defmodule InfinibirdService.Constants do
   def infinibird_server, do: :infinibird_server
 end

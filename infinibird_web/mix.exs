@@ -44,7 +44,7 @@ defmodule Infinibird.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:chartkick, "~> 0.3.0", override: true},
-      {:infinibird_engine, path: "./infinibird_engine"},
+      {:infinibird_service, path: "../infinibird_service"},
       {:distillery, "~>2.0", runtime: false},
       {:comeonin, "~> 5.1"},
       {:argon2_elixir, "~> 2.0"}

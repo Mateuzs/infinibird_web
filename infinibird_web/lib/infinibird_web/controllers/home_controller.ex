@@ -1,6 +1,6 @@
 defmodule InfinibirdWeb.HomeController do
   use InfinibirdWeb, :controller
-  alias InfinibirdEngine.Api
+  alias InfinibirdService.Api
 
   def index(conn, _params) do
     {:ok, data} = Api.get_summary_data()
