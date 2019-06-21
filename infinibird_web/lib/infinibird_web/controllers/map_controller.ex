@@ -1,6 +1,6 @@
 defmodule InfinibirdWeb.MapController do
   use InfinibirdWeb, :controller
-  alias InfinibirdEngine.Api
+  alias InfinibirdService.Api
 
   @spec index(Plug.Conn.t(), any()) :: Plug.Conn.t()
   def index(conn, _params) do

@@ -1,6 +1,6 @@
-defmodule InfinibirdEngine.Server do
+defmodule InfinibirdService.Server do
   use GenServer
-  alias InfinibirdEngine.{DataProvider, Constants}
+  alias InfinibirdService.{DataProvider, Constants}
   @infinibird_server Constants.infinibird_server()
   def start_link(state),
     do: GenServer.start_link(__MODULE__, state, name: @infinibird_server)
@@ -21,12 +21,12 @@ defmodule InfinibirdEngine.Server do
   end
 
   def handle_call({:get_trip_data}, _from, state) do
+
     {:ok, bson_data1} =
-      File.read("infinibird_engine/lib/data/20190202T125015_20190202T142542.bson")
+      File.read(Path.absname("../infinibird_service/lib/data/20190202T125015_20190202T142542.bson"))
 
     {:ok, bson_data2} =
-      File.read("infinibird_engine/lib/data/20190329T170520_20190329T224221.bson")
-
+      File.read(Path.absname("../infinibird_service/lib/data/20190329T170520_20190329T224221.bson"))
     data = %{
       trip1: %{
         name: "Trasa 1",

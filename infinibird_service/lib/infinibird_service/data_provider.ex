@@ -1,4 +1,4 @@
-defmodule InfinibirdEngine.DataProvider do
+defmodule InfinibirdService.DataProvider do
   def get_chart_mock_data(),
     do: %{
       pie_chart_data: [

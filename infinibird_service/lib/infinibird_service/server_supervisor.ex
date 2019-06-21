@@ -1,6 +1,6 @@
-defmodule InfinibirdEngine.ServerSupervisor do
+defmodule InfinibirdService.ServerSupervisor do
   use Supervisor
-  alias InfinibirdEngine.Server
+  alias InfinibirdService.Server
 
   def start_link(_options), do: Supervisor.start_link(__MODULE__, :ok, name: __MODULE__)
 

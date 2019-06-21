@@ -1,4 +1,4 @@
-defmodule InfinibirdEngine.Application do
+defmodule InfinibirdService.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -8,12 +8,12 @@ defmodule InfinibirdEngine.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      InfinibirdEngine.ServerSupervisor
+      InfinibirdService.ServerSupervisor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: InfinibirdEngine.Supervisor]
+    opts = [strategy: :one_for_one, name: InfinibirdService.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

@@ -1,6 +1,6 @@
 defmodule InfinibirdWeb.ChartsController do
   use InfinibirdWeb, :controller
-  alias InfinibirdEngine.Api
+  alias InfinibirdService.Api
 
   def index(conn, _params) do
     {:ok, data} = Api.get_mock_data()

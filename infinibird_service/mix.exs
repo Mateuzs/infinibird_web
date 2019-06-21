@@ -1,9 +1,9 @@
-defmodule InfinibirdEngine.MixProject do
+defmodule InfinibirdService.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :infinibird_engine,
+      app: :infinibird_service,
       version: "0.3.5",
       elixir: "~> 1.8",
       start_permanent: Mix.env() == :prod,
@@ -15,7 +15,7 @@ defmodule InfinibirdEngine.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {InfinibirdEngine.Application, []}
+      mod: {InfinibirdService.Application, []}
     ]
   end
 
