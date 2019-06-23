@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infinibird</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn,"/css/app.css" )
+      %>"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""/>
+    <script src="//www.google.com/jsapi"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn,"/js/app.js") %>"></script>
+    </head>
+    
+    <body class="body">
+      <div role="main" class="main">
+        <header  class="header navbar navbar-dark">
+               <div class="header-child">
+                <div class="title">
+                  <i class="fas fa-fire-alt"></i>
+                  <div class="infinibird"> Infinibird</div>
+                  <div class="sign-info">
+                  <%= if Infinibird.Auth.User.authenticate_user(@conn) do %>
+                    zalogowano <i class="far fa-check-circle"></i>
+                  <% end %>
+                  </div>
+                </div>
+                </div>
+
+
+                <div class="header-child">                
+                  <%= if Infinibird.Auth.User.authenticate_user(@conn) do %>
+                    <div class="btn-wraper">
+                      <%= link"Home" ,
+                        method: :get,
+                        to: "/" ,
+                        class: "nvb-btn  " ,
+                        data: []
+                      %>
+                      <%= link"Wykresy" ,
+                        method: :get,
+                        to: "/charts" ,
+                        class: " nvb-btn " ,
+                        data: []
+                      %>
+                    </div>
+                    <div class="btn-wraper">
+                      <%= link"Przejazdy" ,
+                            method: :get,
+                            to: "/map" ,
+                            class: "nvb-btn" ,
+                            data: []
+                      %>
+                      <%= link"Wyloguj" ,
+                            method: :post,
+                            to: Routes.login_path(@conn, :delete),
+                            class: " nvb-btn",
+                            data: []
+                      %>
+                    </div>
+                  <% else %>
+                    <div class="btn-wraper">
+                      <%= link"Zaloguj" ,
+                        method: :get,
+                        to: "/login",
+                        class: " nvb-btn" ,
+                        data: []
+                      %>
+                    </div>
+                  <% end %>     
+                </div>
+        </header>
+
+        <div class="container">
+          <%= render(@view_module, @view_template, assigns) %>
+        </div>
+
+        <div class="footer">
+          <p>Proudly crafted by Mateusz (#{Mix.Project.config()[:version]})</p>
+        </div>
+
+      </div> 
+    </body>  
+  </html>
+  
