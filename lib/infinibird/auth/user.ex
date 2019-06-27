@@ -40,6 +40,8 @@ defmodule Infinibird.Auth.User do
   end
 
   def sign_out(conn) do
+    Infinibird.Cache.delete(Plug.Conn.get_session(conn, :current_user_id))
+
     Plug.Conn.configure_session(conn, drop: true)
   end
 end

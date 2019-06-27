@@ -3,7 +3,13 @@ defmodule InfinibirdWeb.ChartsController do
 
   def index(conn, _params) do
     user_id = Plug.Conn.get_session(conn, :current_user_id)
-    %{charts: charts, summary: _summary} = Infinibird.Cache.get(user_id, :summary) |> Bson.decode()
+
+    %{charts: charts, summary: _summary} =
+      Infinibird.Cache.get(user_id, :summary)
+      |> case do
+        %{} -> %{charts: %{}, summary: %{}}
+        result -> Bson.decode(result)
+      end
 
     render(conn, "index.html",
       pie_chart_data: Jason.encode!(Map.get(charts, :pie_chart_data)),

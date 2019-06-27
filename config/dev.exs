@@ -73,3 +73,5 @@ config :infinibird, Infinibird.Repo,
   database: "infinibird_db",
   hostname: "localhost",
   pool_size: 10
+
+config :infinibird, :infinibird_service_url, "localhost:4000"
