@@ -1,5 +1,6 @@
 defmodule Infinibird.Auth.User do
   use Ecto.Schema
+  require Logger
   import Ecto.Changeset
 
   # alias Comeonin.Bcrypt
@@ -41,6 +42,7 @@ defmodule Infinibird.Auth.User do
 
   def sign_out(conn) do
     Infinibird.Cache.delete(Plug.Conn.get_session(conn, :current_user_id))
+    Logger.info("Deleted cached user data")
 
     Plug.Conn.configure_session(conn, drop: true)
   end
