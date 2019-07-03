@@ -3,7 +3,7 @@
 
     <div class="trips-list">
        <%= for {trip, data} <- trips(@conn) do %>
-          <div tabindex="1" class="trip" onclick="drawTrip(<%= Jason.encode!(data[:points]) %> )">
+          <div tabindex="1" class="trip" onclick="<%= foo(@conn) %>">
 
             <%= data[:name] %></div>
        <% end %>
@@ -16,4 +16,5 @@
     </div>
   </div>
 
+<%# #drawTrip(<%= Jason.encode!(data[:points]) %> ) %>
       

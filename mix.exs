@@ -33,7 +33,7 @@ defmodule Infinibird.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4.1"},
+      {:phoenix, "~> 1.4.8"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.0"},
@@ -47,7 +47,8 @@ defmodule Infinibird.MixProject do
       {:distillery, "~>2.0", runtime: false},
       {:comeonin, "~> 5.1"},
       {:argon2_elixir, "~> 2.0"},
-      {:httpoison, "~> 1.5.1"}
+      {:httpoison, "~> 1.5.1"},
+      {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"}
     ]
   end
 

@@ -1,11 +1,21 @@
 defmodule InfinibirdWeb.MapController do
-  use InfinibirdWeb, :controller
+  use Phoenix.LiveView
 
-  @spec index(Plug.Conn.t(), any()) :: Plug.Conn.t()
-  def index(conn, _params) do
-    user_id = Plug.Conn.get_session(conn, :current_user_id)
+  def render(assigns), do: InfinibirdWeb.MapView.render("index.html", assigns)
+
+  def mount(session, socket) do
+    user_id = session[:current_user_id]
     data = Infinibird.Cache.get(user_id, :trips) |> Bson.decode()
 
-    render(conn, "index.html", trip_data: data)
+    {:ok,
+     socket
+     |> assign(:data, data)}
   end
+
+  # def index(conn, _params) do
+  #   user_id = Plug.Conn.get_session(conn, :current_user_id)
+  #   data = Infinibird.Cache.get(user_id, :trips) |> Bson.decode()
+
+  #   render(conn, "index.html", trip_data: data)
+  # end
 end

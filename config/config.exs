@@ -15,7 +15,8 @@ config :infinibird, InfinibirdWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "xTiN0T4LZISG30iVAZZZiOtRXzzuG9Y8sF3i8W+5ghSIl6vy0fwJXWp13UuWHbgY",
   render_errors: [view: InfinibirdWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Infinibird.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Infinibird.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "nGWUYpFZ"]
 
 # Configures Elixir's Logger
 config :logger, :console,

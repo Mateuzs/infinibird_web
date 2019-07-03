@@ -1,5 +1,6 @@
 defmodule InfinibirdWeb.Router do
   use InfinibirdWeb, :router
+  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,7 +14,7 @@ defmodule InfinibirdWeb.Router do
   pipeline :auth do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
+    plug Phoenix.LiveView.Flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug InfinibirdWeb.Plugs.SetCurrentUser
@@ -26,7 +27,6 @@ defmodule InfinibirdWeb.Router do
 
   scope "/", InfinibirdWeb do
     pipe_through :browser
-
     get "/login", LoginController, :index
     post "/login", LoginController, :create
     post "/logout", LoginController, :delete
@@ -34,10 +34,9 @@ defmodule InfinibirdWeb.Router do
 
   scope "/", InfinibirdWeb do
     pipe_through :auth
-
     get "/", HomeController, :index
     get "/charts", ChartsController, :index
-    get "/map", MapController, :index
+    live "/map", MapController
   end
 
   # Other scopes may use custom stacks.
