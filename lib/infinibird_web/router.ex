@@ -6,6 +6,7 @@ defmodule InfinibirdWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
+    plug Phoenix.LiveView.Flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug InfinibirdWeb.Plugs.SetCurrentUser
@@ -14,6 +15,7 @@ defmodule InfinibirdWeb.Router do
   pipeline :auth do
     plug :accepts, ["html"]
     plug :fetch_session
+    plug :fetch_flash
     plug Phoenix.LiveView.Flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
@@ -36,7 +38,7 @@ defmodule InfinibirdWeb.Router do
     pipe_through :auth
     get "/", HomeController, :index
     get "/charts", ChartsController, :index
-    live "/map", MapController
+    get "/map", MapController, :index
   end
 
   # Other scopes may use custom stacks.

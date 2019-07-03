@@ -2,19 +2,18 @@
   <div class="trips-container">
 
     <div class="trips-list">
-       <%= for {trip, data} <- trips(@conn) do %>
-          <div tabindex="1" class="trip" onclick="<%= foo(@conn) %>">
-
+       <%= for {trip, data} <- @trips do %>
+          <div tabindex="1" class="trip" onclick="drawTrip(<%= Jason.encode!(data[:points]) %>)">
             <%= data[:name] %></div>
        <% end %>
     </div>
-    <div class="trips-details"> DUPA DUPA </div>
+    <div class="trips-details"> <%= @trasa %> </div>
     <div class="trips-map">
       <div id="map">
         <script> integrateMap() </script>
-      </div>
+      </div> 
     </div>
   </div>
 
-<%# #drawTrip(<%= Jason.encode!(data[:points]) %> ) %>
+
       

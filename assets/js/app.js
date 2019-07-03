@@ -6,6 +6,7 @@
 import "phoenix_html";
 import Chartkick from "chartkick";
 import L from "leaflet";
+import LiveSocket from "phoenix_live_view";
 
 // Import local files
 import css from "../css/app.css";
@@ -17,3 +18,8 @@ window.Chartkick = Chartkick;
 window.L = L;
 window.integrateMap = integrateMap;
 window.drawTrip = drawTrip;
+
+// // Live View
+
+// let liveSocket = new LiveSocket("/live");
+// liveSocket.connect();

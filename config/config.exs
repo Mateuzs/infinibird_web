@@ -26,6 +26,10 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+# Phoenix Live View
+config :phoenix,
+  template_engines: [leex: Phoenix.LiveView.Engine]
+
 # Jason for parsing data in Chartkick
 config :chartkick, json_serializer: Jason
 
