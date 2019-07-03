@@ -1,15 +1,15 @@
 <div class="trips-data">
   <p class="trips-details-title">  TRASA </p>
   <div class="trips-details"> 
-  <p class="trips-details-title">  odległość: <small> <%= @trasa %> </small> </p>
-  <p class="trips-details-title">  czas jazdy: <small> <%= @trasa %> </small> </p>
-  <p class="trips-details-title">  początek: <small> <%= @trasa %> </small> </p>
-  <p class="trips-details-title">  koniec: <small> <%= @trasa %> </small> </p>
+  <p class="trip-details-desc">  odległość: <small class="trip-details-value"> <%= @distance %> </small> </p>
+  <p class="trip-details-desc">  czas jazdy: <small class="trip-details-value"> <%= @travel_time %> </small> </p>
+  <p class="trip-details-desc">  początek: <small class="trip-details-value"> <%= @time_start %> </small> </p>
+  <p class="trip-details-desc">  koniec: <small class="trip-details-value"> <%= @time_end %> </small> </p>
   </div>
   <p class="trips-list-title"> PRZEBYTE TRASY </p>
   <div class="trips-list">
-    <%= for {_trip, data} <- @trips do %>
-        <button tabindex="1" class="trip" phx-click="get-user-data" onclick="drawTrip(<%= Jason.encode!(data[:points]) %>)">
+    <%= for {trip, data} <- @trips do %>
+        <button tabindex="1" class="trip" phx-click="get-user-data" value="<%= trip %>" onclick="drawTrip(<%= Jason.encode!(data[:points]) %>)">
             <%= data[:name] %>
         </button>
     <% end %>

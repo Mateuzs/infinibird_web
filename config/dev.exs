@@ -53,7 +53,7 @@ config :infinibird, InfinibirdWeb.Endpoint,
       ~r{priv/gettext/.*(po)$},
       ~r{lib/infinibird_web/views/.*(ex)$},
       ~r{lib/infinibird_web/templates/.*(eex)$},
-      ~r{lib/my_app_web/live/.*(ex)$}
+      ~r{lib/infinibird_web/live/.*(ex)$}
     ]
   ]
 
