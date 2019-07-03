@@ -1,7 +1,9 @@
 defmodule InfinibirdWeb.TripView do
   use Phoenix.LiveView
 
-  def render(assigns), do: InfinibirdWeb.MapView.render("index.html", assigns)
+  def render(assigns) do
+    InfinibirdWeb.MapView.render("index.html", assigns)
+  end
 
   def mount(session, socket) do
     trips = Map.get(session, :data)
@@ -9,11 +11,9 @@ defmodule InfinibirdWeb.TripView do
     {:ok, socket |> assign(trasa: "Ready!") |> assign(trips: trips)}
   end
 
-  def trips(conn) do
-    conn.assigns[:trip_data]
-  end
-
-  def foo(conn) do
-    IO.inspect(conn.assigns[:trip_data])
+  def handle_event("get-user-data", _value, socket) do
+    # do the deploy process
+    IO.puts("fasdfasdfdsa")
+    {:noreply, assign(socket, trasa: "changed!")}
   end
 end

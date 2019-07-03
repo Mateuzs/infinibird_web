@@ -33,6 +33,7 @@
     
     <body class="body">
       <div role="main" class="main">
+        
         <header  class="header navbar navbar-dark">
                <div class="header-child">
                 <div class="title">
@@ -90,10 +91,20 @@
                 </div>
         </header>
 
-        <div class="container">
-          <%= render(@view_module, @view_template, assigns) %>
-        </div>
-
+        <%= if (@conn.request_path === "/map") do %>
+          <div class="container">
+            <div class="trips-map">
+              <div id="map">
+                <script> integrateMap() </script>
+              </div>
+            </div>
+            <%= render(@view_module, @view_template, assigns) %>
+          </div>
+        <% else %>
+          <div class="container">
+            <%= render(@view_module, @view_template, assigns) %>
+          </div>
+        <% end %>     
         <div class="footer">
           <p><%="Proudly crafted by Mateusz (#{Application.spec(:infinibird, :vsn)})"%> </p>
         </div>
