@@ -132,15 +132,12 @@ html {
 /********** conatiner ***********/
 
 .container {
-  max-width: 100%;
+  max-width: 100%;  
   margin: 0;
   padding: 0;
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
+  display: flex; 
+  flex-grow: 1;
+  justify-content: center; 
 }
 .container::-webkit-scrollbar {
   display: none;
