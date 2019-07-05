@@ -136,8 +136,9 @@ html {
   margin: 0;
   padding: 0;
   display: flex; 
+  justify-content: center;
   flex-grow: 1;
-  justify-content: center; 
+  justify-content: center;
 }
 .container::-webkit-scrollbar {
   display: none;

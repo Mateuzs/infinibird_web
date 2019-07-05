@@ -13,8 +13,4 @@ export default function integrateMap() {
       id: "mapbox.streets"
     }
   ).addTo(mymap);
-
-  var marker = L.marker([50.061518, 19.936606]).addTo(mymap);
-
-  marker.bindPopup("<b>Hello world!</b><br>Hello from the middle of Krakow!.");
 }

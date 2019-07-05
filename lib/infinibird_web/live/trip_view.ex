@@ -12,6 +12,7 @@ defmodule InfinibirdWeb.TripView do
      socket
      |> assign(distance: "")
      |> assign(travel_time: "")
+     |> assign(average_speed: "")
      |> assign(time_start: "")
      |> assign(time_end: "")
      |> assign(trips: trips)}
@@ -26,22 +27,27 @@ defmodule InfinibirdWeb.TripView do
 
     distance_string =
       case Kernel.trunc(distance / 1000) do
-        0 -> "#{distance}m"
-        kilometers -> "#{kilometers}km #{rem(distance, 1000)}m"
+        0 -> "#{distance} m"
+        kilometers -> "#{kilometers} km #{rem(distance, 1000)} m"
       end
 
     travel_time_minutes = trips[trip].travel_time_minutes
 
     travel_time_string =
       case Kernel.trunc(travel_time_minutes / 60) do
-        0 -> "#{travel_time_minutes}min"
-        hours -> "#{hours}h #{rem(travel_time_minutes, 60)}min"
+        0 -> "#{travel_time_minutes} min"
+        hours -> "#{hours} h #{rem(travel_time_minutes, 60)} min"
       end
+
+    speed_km_h = (distance / 1000 / (travel_time_minutes / 60)) |> Kernel.trunc()
+
+    average_speed_string = "#{speed_km_h} km/h"
 
     {:noreply,
      socket
      |> assign(distance: distance_string)
      |> assign(travel_time: travel_time_string)
+     |> assign(average_speed: average_speed_string)
      |> assign(time_start: trips[trip].start_time)
      |> assign(time_end: trips[trip].end_time)}
   end
