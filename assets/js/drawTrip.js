@@ -13,14 +13,14 @@ export default function drawTrip(points) {
     mapPoints.forEach(point => mymap.removeLayer(point));
   }
 
-  path = L.polyline(points, { color: "#37e4db" }).addTo(mymap);
+  path = L.polyline(points, { color: "#0c79f5" }).addTo(mymap);
 
   mapPoints = points.map(point => {
     const mapPoint = L.circle(point, {
       color: "#d037e4",
       fillColor: "#d037e4",
       fillOpacity: 1,
-      radius: 4
+      radius: 10
     }).addTo(mymap);
 
     mapPoint.bindPopup(
