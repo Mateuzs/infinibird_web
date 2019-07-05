@@ -1,6 +1,5 @@
 defmodule InfinibirdWeb.Router do
   use InfinibirdWeb, :router
-  import Phoenix.LiveView.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
