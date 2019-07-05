@@ -15,7 +15,8 @@ config :infinibird, InfinibirdWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "xTiN0T4LZISG30iVAZZZiOtRXzzuG9Y8sF3i8W+5ghSIl6vy0fwJXWp13UuWHbgY",
   render_errors: [view: InfinibirdWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Infinibird.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Infinibird.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [signing_salt: "nGWUYpFZ"]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,6 +25,10 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+# Phoenix Live View
+config :phoenix,
+  template_engines: [leex: Phoenix.LiveView.Engine]
 
 # Jason for parsing data in Chartkick
 config :chartkick, json_serializer: Jason

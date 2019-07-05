@@ -14,11 +14,12 @@ html {
 
 .body::-webkit-scrollbar {
   display: none;
-}
+} 
 
 .main {
   display: flex;
   flex-direction: column;
+  flex: 1 0 auto;
   height: 100%;
 }
 
@@ -131,15 +132,13 @@ html {
 /********** conatiner ***********/
 
 .container {
-  flex: 1 0 auto;
-  max-width: 100%;
+  max-width: 100%;  
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  display: flex; 
   justify-content: center;
-  align-items: center;
-  align-content: center;
+  flex-grow: 1;
+  justify-content: center;
 }
 .container::-webkit-scrollbar {
   display: none;

@@ -23,6 +23,7 @@ defmodule InfinibirdWeb do
 
       import Plug.Conn
       import InfinibirdWeb.Gettext
+
       alias InfinibirdWeb.Router.Helpers, as: Routes
     end
   end
@@ -41,6 +42,8 @@ defmodule InfinibirdWeb do
 
       import InfinibirdWeb.ErrorHelpers
       import InfinibirdWeb.Gettext
+      import Phoenix.LiveView, only: [live_render: 2, live_render: 3]
+
       alias InfinibirdWeb.Router.Helpers, as: Routes
     end
   end
@@ -50,6 +53,7 @@ defmodule InfinibirdWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 

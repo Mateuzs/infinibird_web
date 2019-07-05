@@ -1,5 +1,6 @@
 
 
+    <div>
     <div class="description-block"><h2> Sample charts generated with data
             fetched from GenServer</h2></div>
 <ul class="charts-container">
@@ -28,3 +29,5 @@
 
                             
                         </ul>
+
+    </div>

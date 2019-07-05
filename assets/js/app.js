@@ -3,14 +3,21 @@
 // in "webpack.config.js".
 //
 // Import dependencies
+
 import "phoenix_html";
 import Chartkick from "chartkick";
 import L from "leaflet";
+import LiveSocket from "phoenix_live_view";
 
 // Import local files
 import css from "../css/app.css";
 import integrateMap from "../js/integrateMap";
 import drawTrip from "../js/drawTrip";
+
+// // Live View
+
+let liveSocket = new LiveSocket("/live");
+liveSocket.connect();
 
 // do JS stuff
 window.Chartkick = Chartkick;
