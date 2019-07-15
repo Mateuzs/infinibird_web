@@ -1,18 +1,20 @@
-.description-block{
-  color: #0cdaf5;
+@import "constants";
+
+.charts__description-block {
+  color: $base-blue;
   font-size: 10px;
   margin-top: 5vh;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 2em;
   margin-bottom: 1em;
   text-align: center;
-  } 
+}
 
-.charts-container { 
+.charts__container {
   background: transparent;
   margin: 0;
   padding: 0;
-  width: 100%;  
+  width: 100%;
   display: flex;
   align-content: center;
   justify-content: center;
@@ -22,7 +24,7 @@
   margin-bottom: 7em;
 }
 
-.chart {
+.charts__chart {
   display: flex;
   margin: 1vh;
   width: 90%;

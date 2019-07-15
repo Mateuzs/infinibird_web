@@ -93,7 +93,7 @@
 
         <%= if (@conn.request_path === "/map") do %>
           <div class="body__container">
-            <div class="trips-map"> 
+            <div class="map"> 
               <div id="map">
                 <script> integrateMap() </script>
               </div>

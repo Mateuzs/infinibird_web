@@ -1,16 +1,16 @@
-<div class="trips-data">
-  <p class="trips-details-title">  TRASA </p>
-  <div class="trips-details"> 
-  <p class="trip-details-desc">  odległość: <small class="trip-details-value"> <%= @distance %> </small> </p>
-  <p class="trip-details-desc">  czas jazdy: <small class="trip-details-value"> <%= @travel_time %> </small> </p>
-  <p class="trip-details-desc">  średnia prędkość: <small class="trip-details-value"> <%= @average_speed %> </small> </p>
-  <p class="trip-details-desc">  początek: <small class="trip-details-value"> <%= @time_start %> </small> </p>
-  <p class="trip-details-desc">  koniec: <small class="trip-details-value"> <%= @time_end %> </small> </p>
+<div class="trips">
+  <p class="trips__details-header">  TRASA </p>
+  <div class="trips__details"> 
+  <p class="trips__details-key">  odległość: <small class="trips__details-value"> <%= @distance %> </small> </p>
+  <p class="trips__details-key">  czas jazdy: <small class="trips__details-value"> <%= @travel_time %> </small> </p>
+  <p class="trips__details-key">  średnia prędkość: <small class="trips__details-value"> <%= @average_speed %> </small> </p>
+  <p class="trips__details-key">  początek: <small class="trips__details-value"> <%= @time_start %> </small> </p>
+  <p class="trips__details-key">  koniec: <small class="trips__details-value"> <%= @time_end %> </small> </p>
   </div>
-  <p class="trips-list-title"> PRZEBYTE TRASY </p>
-  <div class="trips-list">
+  <p class="trips__list-header"> PRZEBYTE TRASY </p>
+  <div class="trips__list">
     <%= for {trip, data} <- @trips do %>
-        <button tabindex="1" class="trip" phx-click="get-user-data" value="<%= trip %>" onclick="drawTrip(<%= Jason.encode!(data[:points]) %>)">
+        <button tabindex="1" class="trips__trip" phx-click="get-user-data" value="<%= trip %>" onclick="drawTrip(<%= Jason.encode!(data[:points]) %>)">
             <%= data[:name] %>
         </button>
     <% end %>

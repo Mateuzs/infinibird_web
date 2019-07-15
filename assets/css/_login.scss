@@ -1,64 +1,57 @@
+@import "constants";
 
 .login-container {
-    background: #000000;
-    width: 20%;
-    min-width: 300px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    align-self: center;
-    text-align: center;
-    font-size: 1.2em;
-    color: $base-blue;
-    border-radius: 8px;
-    border: $base-blue solid 2px;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-bottom: 10px;
-    margin-top: -10%;
-  }
-  .alert-message {
-    margin-bottom: 10px;
-    margin-top: 0;
-    height: 20px;
-    width: 100%;
-    padding: 5px;
-  
-    font-size: 1.1em;
-    color: rgb(211, 4, 4);
-  }
-  
-  .control-label,
-  control-form {
-    font-size: 1.2em;
-  }
-  
-  form {
-    width: 100%;
-  }
-  
-  .form-control {
-    display: inline;
-    text-align: center;
-  }
-  
+  background: #000000;
+  width: 20%;
+  min-width: 300px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  text-align: center;
+  font-size: 1.2em;
+  color: $base-blue;
+  border-radius: 8px;
+  border: $base-blue solid 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 10px;
+  margin-top: -10%;
+}
+.login-container__alert {
+  margin-bottom: 10px;
+  margin-top: 0;
+  height: 20px;
+  width: 100%;
+  padding: 5px;
 
-  /* ***** image ****** */
+  font-size: 1.1em;
+  color: rgb(211, 4, 4);
+}
 
-.bird {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    color: $base-blue;
-    font-size: 5vw;
-    margin-top: 10px;
-    padding: 0;
-    transition: 0.5s;
-  }
-  .bird:hover {
-    color: #ff8a58;
-    transition: 0.5s;
-  }
-  
-  
+.login-container__label {
+  font-size: 1.2em;
+}
+
+.login-container__password {
+  display: inline;
+  text-align: center;
+}
+
+form {
+  width: 100%;
+}
+
+/* ***** image ****** */
+
+.login-container__bird {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: $base-blue;
+  font-size: 5vw;
+  margin-top: 10px;
+  padding: 0;
+  transition: 0.5s;
+}

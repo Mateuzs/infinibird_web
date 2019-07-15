@@ -1,36 +1,36 @@
-<div class="blocks-container">
+<div class="tiles-container">
 
-        <div class="block">
+        <div class="tiles-container__tile">
             Przejechano 
             <%= if amount_of_km(@conn) !== nil do %>
-                <p class="home_info" ><%= amount_of_km(@conn) %> km </p> 
+                <p class="tiles-container__tile-description" ><%= amount_of_km(@conn) %> km </p> 
             <% else %>
-                <p class="home_info" >brak danych</p> 
+                <p class="tiles-container__tile-description" >brak danych</p> 
             <% end  %>
          </div>
 
-        <div class="block">
+        <div class="tiles-container__tile">
             Liczba przejazdów 
             <%= if number_of_trips(@conn) !== nil do %>
-                <p class="home_info" ><%= number_of_trips(@conn) %>  </p> 
+                <p class="tiles-container__tile-description" ><%= number_of_trips(@conn) %>  </p> 
             <% else %>
-                <p class="home_info" >brak danych</p> 
+                <p class="tiles-container__tile-description" >brak danych</p> 
             <% end  %>
 
-         </div><div class="block">
+         </div><div class="tiles-container__tile"> 
             Średnia prędkość 
             <%= if average_speed(@conn) !== nil do %>
-                <p class="home_info" ><%= average_speed(@conn) %> km/h </p> 
+                <p class="tiles-container__tile-description" ><%= average_speed(@conn) %> km/h </p> 
             <% else %>
-                <p class="home_info" >brak danych</p> 
+                <p class="tiles-container__tile-description" >brak danych</p> 
             <% end  %>
 
-         </div><div class="block">
+         </div><div class="tiles-container__tile">
             Indeks bezpieczeństwa 
             <%= if safety_index(@conn) !== nil do %>
-                <p class="home_info" ><%= safety_index(@conn) %> </p> 
+                <p class="tiles-container__tile-description" ><%= safety_index(@conn) %> </p> 
             <% else %>
-                <p class="home_info" >brak danych</p> 
+                <p class="tiles-container__tile-description" >brak danych</p> 
             <% end  %>
          </div>
 </div>
