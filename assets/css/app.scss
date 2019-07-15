@@ -1,7 +1,8 @@
-@import url('charts.css');
-@import url('home.css');
-@import url('login.css');
-@import url('trips.css');
+@import 'charts';
+@import 'home';
+@import 'login';
+@import 'trips';
+@import 'consts';
 
 /* Main structure */
 
@@ -13,7 +14,7 @@ html {
 }
 
 .body::-webkit-scrollbar {
-  display: none;
+  display: none; 
 } 
 
 .main {
@@ -35,7 +36,8 @@ html {
   align-content: center;
   z-index: 10;
 }
-.header-child {
+
+.header__buttons-container {
   display: flex;
   flex-wrap: wrap;
   width: 50%;
@@ -43,21 +45,13 @@ html {
   justify-content: flex-end;
 }
 
-.logo {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  margin: 0;
-  padding: 0;
-}
-
-.btn-wraper {
+.header__button-wrapper {
   display: flex;
   align-content: center;
   justify-content: flex-end;
 }
 
-.sign-info {
+.header__login-info {
   display: flex;
   flex-wrap: wrap;
   justify-content: felx-start;
@@ -70,52 +64,21 @@ html {
   font-size: 0.42em;
   margin-left: 5px;
 }
-.far{
-  margin-top: 5px;
-  margin-left: 4px;
-}
 
-.infinibird{
-  margin-right:5px;
-  font-size: 0.7em;
-}
-
-.title {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  color: #0cdaf5;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 2em;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  transition: 0.5s;
-}
-.fas {
-  margin-right: 5px;
-  font-size: 0.7em; 
-  margin-top:5px;
-}
-.title:hover {
-  color: #ff8a58;
-  transition: 0.5s;
-}
-
-.nvb-btn {
+.header__button {
   text-align: center;
   margin: 5px;
   padding: 5px 3px 5px 3px;
   border-radius: 5px;
   width: 73px;
   font-size: 0.85em;
-  border: solid 1px #0cdaf5;
-  color: #0cdaf5;
+  border: solid 1px $base-blue;
+  color: $base-blue;
   background: transparent;
   outline: none;
 
 }
-.nvb-btn:hover {
+.header__button:hover {
   border: solid 1px #ff8a58;
   color: #ff8a58;
   background: black;
@@ -123,15 +86,44 @@ html {
   outline: none;
 
 }
-.nvb-btn:active {
+.header__button:active {
   border: solid 1px #ec5a1b;
   color: #ec5a1b;
   background: black;
   outline: none;
 }
-/********** conatiner ***********/
 
-.container {
+.header__login-sign{
+  margin-top: 5px;
+  margin-left: 4px;
+}
+ 
+.header__infinibird{
+  margin-right:5px;
+  font-size: 0.7em;
+}
+
+.header__title{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  color: $base-blue;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 2em;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  transition: 0.5s;
+}
+.header__fire-sign {
+  margin-right: 5px;
+  font-size: 0.7em; 
+  margin-top:5px;
+}
+
+/********** container ***********/
+
+.body__container {
   max-width: 100%;  
   margin: 0;
   padding: 0;
@@ -140,7 +132,7 @@ html {
   flex-grow: 1;
   justify-content: center;
 }
-.container::-webkit-scrollbar {
+.body__container::-webkit-scrollbar {
   display: none;
 }
 
@@ -151,22 +143,18 @@ html {
   text-align: center;
   height: 20px;
   bottom: 0;
-  color: #0cdaf5;
+  color: $base-blue;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 0.8em;
   text-align: center;
   flex-shrink: 0;
-  transition: 0.5s;
   z-index: 10;
 
 }
-.footer:hover {
-  color: #ffa958;
-  transition: 0.5s;
-  
-}
+
+/********** modifiers ***********/
+
+
 p{
   margin:0;
 }
-
-

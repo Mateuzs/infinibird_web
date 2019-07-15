@@ -12,7 +12,7 @@
 
 
     <div class="form-group">
-      <%= submit "Zaloguj!", class: "nvb-btn" %>
+      <%= submit "Zaloguj!", class: "header__button" %>
     </div>
   <% end %>
 <% end %>

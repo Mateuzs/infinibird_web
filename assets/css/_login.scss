@@ -10,9 +10,9 @@
     align-self: center;
     text-align: center;
     font-size: 1.2em;
-    color: #0cdaf5;
+    color: $base-blue;
     border-radius: 8px;
-    border: #0cdaf5 solid 2px;
+    border: $base-blue solid 2px;
     padding-left: 20px;
     padding-right: 20px;
     padding-bottom: 10px;
@@ -50,7 +50,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    color: #0cdaf5;
+    color: $base-blue;
     font-size: 5vw;
     margin-top: 10px;
     padding: 0;

@@ -1,8 +1,10 @@
 
+@import 'consts';
+
 .blocks-container {
-    background: transparent;
-    margin-top: 50px;
-    padding: 0;
+  background: transparent;
+  margin-top: 50px;
+  padding: 0;
     width: 100%;
     display: flex;
     align-content: center;
@@ -14,12 +16,12 @@
   }
   
   .block{
-    color: #0cdaf5;
+    color: $base-blue;
     background: black;
     flex-wrap: wrap;
     display: flex;
     border-radius: 8px;
-    border: #0cdaf5 solid 2px;
+    border: $base-blue solid 2px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 2em;
     margin: 10px;

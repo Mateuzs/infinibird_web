@@ -6,12 +6,12 @@
     "watch": "webpack --mode development --watch"
   },
   "dependencies": {
+    "brunch": "^2.10.17",
+    "chartkick": "^3.0.2",
+    "leaflet": "^1.4.0",
     "phoenix": "file:../deps/phoenix",
     "phoenix_html": "file:../deps/phoenix_html",
-    "phoenix_live_view": "file:./phoenix_live_view",
-    "chartkick": "^3.0.2",
-    "brunch": "^2.10.17",
-    "leaflet": "^1.4.0"
+    "phoenix_live_view": "file:./phoenix_live_view"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -22,7 +22,9 @@
     "copy-webpack-plugin": "^4.5.0",
     "css-loader": "^0.28.10",
     "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.12.0",
     "optimize-css-assets-webpack-plugin": "^4.0.0",
+    "sass-loader": "^7.1.0",
     "uglifyjs-webpack-plugin": "^1.2.4",
     "webpack": "4.4.0",
     "webpack-cli": "^3.2.3"

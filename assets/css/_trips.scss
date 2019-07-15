@@ -1,3 +1,4 @@
+@import 'consts';
 
 #map {
     width: 100%;
@@ -12,10 +13,10 @@
     display: flex;
     border-radius: 8px;
     margin: 1%;
-    border: #0cdaf5 solid 2px;
+    border: $base-blue solid 2px;
     background: #000000;
     font-size: 1.2em;
-    color: #0cdaf5;
+    color: $base-blue;
 }
 
 .trips-data{
@@ -51,9 +52,9 @@
     margin-bottom: 30px;
     padding: 5px;
     font-size: 1em;
-    color: #0cdaf5;
+    color: $base-blue;
     border-radius: 8px;
-    border: #0cdaf5 solid 2px;
+    border: $base-blue solid 2px;
     text-align:left;
 
 }
@@ -78,15 +79,15 @@
     margin-right: 5%; 
     padding: 10px;
     font-size: 1.2em;
-    color: #0cdaf5;
+    color: $base-blue;
     border-radius: 8px;
-    border: #0cdaf5 solid 2px;
+    border: $base-blue solid 2px;
 }
 
 .trip{
     background: #131327;
     border: none;
-    color: #0cdaf5;
+    color: $base-blue;
     width: 100%;
     margin: 2px;
     outline: none;
