@@ -2,16 +2,16 @@
 
 <div>
     <div class="charts__description-block"> 
-        <h2> Sample charts generated with data fetched from GenServer</h2>
+        <h2> Sample charts generated with data fetched from infinibird_service</h2>
     </div>
 
     <ul class="charts__container">
-        <li class="charts_chart"> <%= raw Chartkick.pie_chart pie_chart_data(@conn) %> </li>
-        <li class="charts_chart"> <%= raw Chartkick.line_chart line_chart_data(@conn) %> </li>
-        <li class="charts_chart"> <%= raw Chartkick.column_chart column_chart_data(@conn) %> </li>
-        <li class="charts_chart"> <%= raw Chartkick.area_chart area_chart_data(@conn) %> </li>
-        <li class="charts_chart"> <%= raw Chartkick.line_chart multilines_chart_data(@conn) %> </li>
-        <li class="charts_chart"> <%= raw Chartkick.geo_chart geo_chart_data(@conn) %> </li>
+        <li class="charts__chart"> <%= raw Chartkick.pie_chart pie_chart_data(@conn) %> </li>
+        <li class="charts__chart"> <%= raw Chartkick.line_chart line_chart_data(@conn) %> </li>
+        <li class="charts__chart"> <%= raw Chartkick.column_chart column_chart_data(@conn) %> </li>
+        <li class="charts__chart"> <%= raw Chartkick.area_chart area_chart_data(@conn) %> </li>
+        <li class="charts__chart"> <%= raw Chartkick.line_chart multilines_chart_data(@conn) %> </li>
+        <li class="charts__chart"> <%= raw Chartkick.geo_chart geo_chart_data(@conn) %> </li>
     </ul>
 
 </div>

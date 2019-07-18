@@ -7,7 +7,7 @@
 
     <div class="form-group">
       <%= label f, :podaj_token_autoryzacyjny, class: "login-container__label" %>
-      <%= password_input f, :key, class: "login-container__password" %>
+      <%= password_input f, :key, class: "form-control login-container__password" %>
     </div>
 
 
