@@ -1,7 +1,7 @@
 @import "constants";
 
 .login-container {
-  background: #000000;
+  background: $snow-white;
   width: 20%;
   min-width: 300px;
   display: flex;
@@ -11,9 +11,9 @@
   align-self: center;
   text-align: center;
   font-size: 1.2em;
-  color: $base-blue;
+  color: $dark-blue;
   border-radius: 8px;
-  border: $base-blue solid 2px;
+  border: $dark-blue solid 2px;
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 10px;
@@ -37,6 +37,16 @@
 .login-container__password {
   display: inline;
   text-align: center;
+  background-color: $snow-white;
+  border: 2px solid $dark-blue;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px $snow-white inset !important;
+  -webkit-box-shadow: 0 0 0 30px $snow-white inset !important;
+  border: 2px solid $dark-blue;
 }
 
 form {
@@ -49,7 +59,7 @@ form {
   justify-content: center;
   align-items: center;
   display: flex;
-  color: $base-blue;
+  color: $dark-blue;
   font-size: 5vw;
   margin-top: 10px;
   padding: 0;

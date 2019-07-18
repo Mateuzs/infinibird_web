@@ -15,12 +15,12 @@
 }
 
 .tiles-container__tile {
-  color: $base-blue;
-  background: black;
+  color: $dark-blue;
+  background: $snow-white;
+  border: 2px solid $dark-blue;
   flex-wrap: wrap;
   display: flex;
   border-radius: 8px;
-  border: $base-blue solid 2px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 2em;
   margin: 10px;
@@ -33,7 +33,7 @@
 }
 
 .tiles-container__tile-description {
-  color: #ffbd53;
+  color: $dark-blue;
   font-size: 2em;
   margin: 0;
   padding: 0;
