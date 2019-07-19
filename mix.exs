@@ -4,7 +4,7 @@ defmodule Infinibird.MixProject do
   def project do
     [
       app: :infinibird,
-      version: "0.4.0",
+      version: "0.4.1",
       elixir: "~> 1.8",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -14,7 +14,7 @@ defmodule Infinibird.MixProject do
     ]
   end
 
-  # Configuration for the OTP application. 
+  # Configuration for the OTP application.
   #
   # Type `mix help compile.app` for more information.
   def application do
