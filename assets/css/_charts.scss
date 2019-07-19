@@ -1,0 +1,35 @@
+@import "constants";
+
+.charts__description-block {
+  color: $dark-blue;
+  font-size: 10px;
+  margin-top: 5vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2em;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.charts__container {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  margin-bottom: 7em;
+}
+
+.charts__chart {
+  display: flex;
+  margin: 1vh;
+  width: 90%;
+  min-width: 400px;
+  padding: 0;
+  border: 2px solid $dark-blue;
+  border-radius: $base-radius;
+}

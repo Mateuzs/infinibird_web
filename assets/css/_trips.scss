@@ -1,0 +1,101 @@
+@import "constants";
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.map {
+  width: 79vw;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  border-radius: $base-radius;
+  margin: 1%;
+  border: $dark-blue solid 2px;
+  background: #000000;
+  font-size: 1.2em;
+  color: $dark-blue;
+}
+
+.trips {
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.trips__details-header {
+  color: $dark-blue;
+  width: 95%;
+  text-align: center;
+  font-size: 1.2em;
+  margin-left: 0;
+  margin-top: 20px;
+}
+
+.trips__list-header {
+  color: $dark-blue;
+  width: 95%;
+  text-align: center;
+  font-size: 1.2em;
+  margin-left: 0;
+}
+
+.trips__details {
+  background: $snow-white;
+  margin: 10px;
+  margin-left: 0;
+  margin-right: 5%;
+  margin-bottom: 30px;
+  padding: 5px;
+  font-size: 1em;
+  color: $dark-blue;
+  border-radius: $base-radius;
+  border: $dark-blue solid 2px;
+  text-align: left;
+}
+
+.trips__details-key {
+  margin: 2px;
+  font-size: 1.2em;
+}
+
+.trips__details-value {
+  font-size: 1em;
+  color: $base-red;
+}
+
+.trips__list {
+  background: $snow-white;
+  margin: 10px;
+  margin-left: 0;
+  margin-right: 5%;
+  padding: 10px;
+  font-size: 1.2em;
+  color: $base-background-color;
+  border-radius: $base-radius;
+  border: $dark-blue solid 2px;
+}
+
+.trips__trip {
+  background: $dark-blue;
+  border: none;
+  color: $base-background-color;
+  width: 100%;
+  margin-bottom: 2px;
+  outline: none;
+  border-radius: $base-radius;
+  border: solid 2px transparent;
+}
+
+.trips__trip:hover,
+.trips__trip:active,
+.trips__trip:focus {
+  color: $dark-blue;
+  background: $bright-blue;
+  border: solid 2px $dark-blue;
+  vertical-align: center;
+  outline: none;
+}

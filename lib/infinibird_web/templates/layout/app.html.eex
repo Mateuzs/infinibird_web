@@ -35,55 +35,55 @@
       <div role="main" class="main">
         
         <header  class="header navbar navbar-dark">
-               <div class="header-child">
-                <div class="title">
-                  <i class="fas fa-fire-alt"></i>
-                  <div class="infinibird"> Infinibird</div>
-                  <div class="sign-info">
+               <div class="header__buttons-container">
+                <div class="header__title">
+                  <i class="header__fire-sign fas fa-fire-alt"></i>
+                  <div class="header__infinibird"> Infinibird</div>
+                  <div class="header__login-info">
                   <%= if Infinibird.Auth.User.authenticate_user(@conn) do %>
-                    zalogowano <i class="far fa-check-circle"></i>
+                    zalogowano <i class="header__login-sign far fa-check-circle"></i>
                   <% end %>
                   </div>
                 </div>
                 </div>
 
 
-                <div class="header-child">                
+                <div class="header__buttons-container">                
                   <%= if Infinibird.Auth.User.authenticate_user(@conn) do %>
-                    <div class="btn-wraper">
+                    <div class="header__button-wrapper">
                       <%= link"Home" ,
                         method: :get,
                         to: "/" ,
-                        class: "nvb-btn  " ,
+                        class: "header__button  " ,
                         data: []
                       %>
                       <%= link"Wykresy" ,
                         method: :get,
                         to: "/charts" ,
-                        class: " nvb-btn " ,
+                        class: " header__button " ,
                         data: []
                       %>
                     </div>
-                    <div class="btn-wraper">
+                    <div class="header__button-wrapper">
                       <%= link"Przejazdy" ,
                             method: :get,
                             to: "/map" ,
-                            class: "nvb-btn" ,
+                            class: "header__button" ,
                             data: []
                       %>
                       <%= link"Wyloguj" ,
                             method: :post,
                             to: Routes.login_path(@conn, :delete),
-                            class: " nvb-btn",
+                            class: " header__button",
                             data: []
                       %>
                     </div>
                   <% else %>
-                    <div class="btn-wraper">
+                    <div class="header__button-wrapper">
                       <%= link"Zaloguj" ,
                         method: :get,
                         to: "/login",
-                        class: " nvb-btn" ,
+                        class: " header__button" ,
                         data: []
                       %>
                     </div>
@@ -92,8 +92,8 @@
         </header>
 
         <%= if (@conn.request_path === "/map") do %>
-          <div class="container">
-            <div class="trips-map">
+          <div class="body__container">
+            <div class="map"> 
               <div id="map">
                 <script> integrateMap() </script>
               </div>
@@ -101,7 +101,7 @@
             <%= render(@view_module, @view_template, assigns) %>
           </div>
         <% else %>
-          <div class="container">
+          <div class="body__container">
             <%= render(@view_module, @view_template, assigns) %>
           </div>
         <% end %>     

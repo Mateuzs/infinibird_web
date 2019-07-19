@@ -10,7 +10,7 @@ import L from "leaflet";
 import LiveSocket from "phoenix_live_view";
 
 // Import local files
-import css from "../css/app.css";
+import css from "../css/app.scss";
 import integrateMap from "../js/integrateMap";
 import drawTrip from "../js/drawTrip";
 

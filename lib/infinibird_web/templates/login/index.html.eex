@@ -2,17 +2,17 @@
  <%= if !@logged_in do %>
   <%= form_for @conn, Routes.login_path(@conn, :create), fn f -> %>
 
-    <div class="bird"> <i class="fab fa-phoenix-framework"></i></div>
-    <div class="alert-message" role="alert"><%= get_flash(@conn, :error) %></div>
+    <div class="login-container__bird"> <i class="fab fa-phoenix-framework"></i></div>
+    <div class="login-container__alert" role="alert"><%= get_flash(@conn, :error) %></div>
 
     <div class="form-group">
-      <%= label f, :podaj_token_autoryzacyjny, class: "control-label" %>
-      <%= password_input f, :key, class: "form-control" %>
+      <%= label f, :podaj_token_autoryzacyjny, class: "login-container__label" %>
+      <%= password_input f, :key, class: "form-control login-container__password" %>
     </div>
 
 
     <div class="form-group">
-      <%= submit "Zaloguj!", class: "nvb-btn" %>
+      <%= submit "Zaloguj!", class: "header__button" %>
     </div>
   <% end %>
 <% end %>

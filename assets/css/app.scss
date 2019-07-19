@@ -1,20 +1,21 @@
-@import url('charts.css');
-@import url('home.css');
-@import url('login.css');
-@import url('trips.css');
+@import "charts";
+@import "home";
+@import "login";
+@import "trips";
+@import "constants";
 
 /* Main structure */
 
 body,
 html {
-  background: #131327;
+  background: $base-background-color;
   height: 100%;
   width: 100%;
 }
 
 .body::-webkit-scrollbar {
   display: none;
-} 
+}
 
 .main {
   display: flex;
@@ -25,17 +26,16 @@ html {
 
 /********** header ***********/
 
-
 .header {
-  background: linear-gradient(180deg, #18182a, black);
-  border-bottom: solid 2px black;
+  background: $dark-blue;
   flex-shrink: 0;
   display: flex;
   flex-wrap: nowrap;
   align-content: center;
   z-index: 10;
 }
-.header-child {
+
+.header__buttons-container {
   display: flex;
   flex-wrap: wrap;
   width: 50%;
@@ -43,24 +43,47 @@ html {
   justify-content: flex-end;
 }
 
-.logo {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  margin: 0;
-  padding: 0;
-}
-
-.btn-wraper {
+.header__button-wrapper {
   display: flex;
   align-content: center;
   justify-content: flex-end;
 }
 
-.sign-info {
+.header__button {
+  text-align: center;
+  margin: 5px;
+  padding: 5px 3px 5px 3px;
+  border-radius: 5px;
+  width: 73px;
+  font-size: 0.85em;
+  color: $snow-white;
+  background: $dark-blue;
+  border: 2px solid $dark-blue;
+  outline: none;
+  text-decoration: none;
+}
+.header__button:hover {
+  color: $dark-blue;
+  background: $snow-white;
+  text-decoration: none;
+  outline: none;
+}
+.header__button:active {
+  color: $dark-blue;
+  background: $base-background-color;
+  outline: none;
+  text-decoration: none;
+}
+
+.header__button:focus {
+  outline: none;
+  text-decoration: none;
+}
+
+.header__login-info {
   display: flex;
   flex-wrap: wrap;
-  justify-content: felx-start;
+  justify-content: flex-start;
   color: #0cf55a;
   font-size: 1.1em;
   margin-right: 5px;
@@ -70,21 +93,22 @@ html {
   font-size: 0.42em;
   margin-left: 5px;
 }
-.far{
+
+.header__login-sign {
   margin-top: 5px;
   margin-left: 4px;
 }
 
-.infinibird{
-  margin-right:5px;
+.header__infinibird {
+  margin-right: 5px;
   font-size: 0.7em;
 }
 
-.title {
+.header__title {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  color: #0cdaf5;
+  color: $snow-white;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 2em;
@@ -92,81 +116,44 @@ html {
   margin-bottom: 5px;
   transition: 0.5s;
 }
-.fas {
+.header__fire-sign {
   margin-right: 5px;
-  font-size: 0.7em; 
-  margin-top:5px;
-}
-.title:hover {
-  color: #ff8a58;
-  transition: 0.5s;
+  font-size: 0.7em;
+  margin-top: 5px;
 }
 
-.nvb-btn {
-  text-align: center;
-  margin: 5px;
-  padding: 5px 3px 5px 3px;
-  border-radius: 5px;
-  width: 73px;
-  font-size: 0.85em;
-  border: solid 1px #0cdaf5;
-  color: #0cdaf5;
-  background: transparent;
-  outline: none;
+/********** container ***********/
 
-}
-.nvb-btn:hover {
-  border: solid 1px #ff8a58;
-  color: #ff8a58;
-  background: black;
-  text-decoration: none;
-  outline: none;
-
-}
-.nvb-btn:active {
-  border: solid 1px #ec5a1b;
-  color: #ec5a1b;
-  background: black;
-  outline: none;
-}
-/********** conatiner ***********/
-
-.container {
-  max-width: 100%;  
+.body__container {
+  max-width: 100%;
   margin: 0;
   padding: 0;
-  display: flex; 
+  display: flex;
   justify-content: center;
   flex-grow: 1;
   justify-content: center;
 }
-.container::-webkit-scrollbar {
+.body__container::-webkit-scrollbar {
   display: none;
 }
 
 /********** footer ***********/
 
 .footer {
-  background: linear-gradient(180deg, #0e0e18, black);
+  background: $dark-blue;
   text-align: center;
   height: 20px;
   bottom: 0;
-  color: #0cdaf5;
+  color: $snow-white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 0.8em;
   text-align: center;
   flex-shrink: 0;
-  transition: 0.5s;
   z-index: 10;
-
-}
-.footer:hover {
-  color: #ffa958;
-  transition: 0.5s;
-  
-}
-p{
-  margin:0;
 }
 
+/********** modifiers ***********/
 
+p {
+  margin: 0;
+}
