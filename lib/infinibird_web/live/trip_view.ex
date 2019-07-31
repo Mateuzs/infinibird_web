@@ -15,7 +15,7 @@ defmodule InfinibirdWeb.TripView do
      |> assign(average_speed: "")
      |> assign(time_start: "")
      |> assign(time_end: "")
-     |> assign(trips: trips)}
+     |> assign(trips: Map.to_list(trips))}
   end
 
   def handle_event("get-user-data", value, socket) do
@@ -39,7 +39,11 @@ defmodule InfinibirdWeb.TripView do
         hours -> "#{hours} h #{rem(travel_time_minutes, 60)} min"
       end
 
-    speed_km_h = (distance / 1000 / (travel_time_minutes / 60)) |> Kernel.trunc()
+    speed_km_h =
+      case travel_time_minutes do
+        0 -> 0
+        _more_than_0 -> (distance / 1000 / (travel_time_minutes / 60)) |> Kernel.trunc()
+      end
 
     average_speed_string = "#{speed_km_h} km/h"
 
