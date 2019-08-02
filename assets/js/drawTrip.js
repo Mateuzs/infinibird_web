@@ -13,7 +13,16 @@ export default function drawTrip(points) {
     mapPoints.forEach(point => mymap.removeLayer(point));
   }
 
-  path = L.polyline(points, { color: "#0c79f5" }).addTo(mymap);
+  const pathPoints = points.sort((e1, e2) => {
+    const a = e1.tim.split(":");
+    const sum1 = a[0] * 3600 + a[1] * 60 + a[2];
+    const b = e2.tim.split(":");
+    const sum2 = b[0] * 3600 + b[1] * 60 + b[2];
+
+    return sum1 - sum2;
+  });
+
+  path = L.polyline(pathPoints, { color: "#0c79f5" }).addTo(mymap);
 
   mapPoints = points.map(point => {
     const mapPoint = L.circle(point, {
@@ -23,8 +32,15 @@ export default function drawTrip(points) {
       radius: 10
     }).addTo(mymap);
 
+    var kmh = (point.mps * 3.6).toFixed(2);
     mapPoint.bindPopup(
-      "<b>Hello visitor!</b></br>Here we are going to add interesting information :)</br>Stay tuned..."
+      `<b>długość geograficzna: ${point.lon} 
+       </br>szerokość geograficzna: ${point.lat}
+       </br>wysokość nad poziomem morza: ${point.alt} m
+       </br>prędkość: ${kmh} km/h
+       </br>czas: ${point.tim}
+
+       `
     );
 
     return mapPoint;

@@ -1,11 +1,19 @@
 <div class="trips">
   <p class="trips__details-header">  TRASA </p>
-  <div class="trips__details"> 
+  <div class="trips__details">
+  <p class="trips__details-key">  początek: <small class="trips__details-value"> <%= @time_start %> </small> </p>
+  <p class="trips__details-key">  koniec: <small class="trips__details-value"> <%= @time_end %> </small> </p> 
   <p class="trips__details-key">  odległość: <small class="trips__details-value"> <%= @distance %> </small> </p>
   <p class="trips__details-key">  czas jazdy: <small class="trips__details-value"> <%= @travel_time %> </small> </p>
   <p class="trips__details-key">  średnia prędkość: <small class="trips__details-value"> <%= @average_speed %> </small> </p>
-  <p class="trips__details-key">  początek: <small class="trips__details-value"> <%= @time_start %> </small> </p>
-  <p class="trips__details-key">  koniec: <small class="trips__details-value"> <%= @time_end %> </small> </p>
+  <p class="trips__details-key">  maksymalna prędkość: <small class="trips__details-value"> <%= @max_speed %> </small> </p>
+  <p class="trips__details-key">  liczba przyspieszeń: <small class="trips__details-value"> <%= @acc_amount %> </small> </p>
+  <p class="trips__details-key">  liczba hamowań: <small class="trips__details-value"> <%= @dec_amount %> </small> </p>
+  <p class="trips__details-key">  liczba zatrzymań: <small class="trips__details-value"> <%= @stp_amount %> </small> </p>
+  <p class="trips__details-key">  liczba skrętów w lewo: <small class="trips__details-value"> <%= @lt_amount %> </small> </p>
+  <p class="trips__details-key">  liczba skrętów w prawo: <small class="trips__details-value"> <%= @rt_amount %> </small> </p>
+
+  
   </div>
   <p class="trips__list-header"> PRZEBYTE TRASY </p>
   <div class="trips__list">
