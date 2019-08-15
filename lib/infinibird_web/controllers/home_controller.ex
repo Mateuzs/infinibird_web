@@ -2,8 +2,6 @@ defmodule InfinibirdWeb.HomeController do
   use InfinibirdWeb, :controller
 
   def index(conn, _params) do
-    IO.puts("jereasdfadfnda,jfndksjkf")
-    IO.inspect(conn)
     user_id = Plug.Conn.get_session(conn, :current_user_id)
 
     %{charts: _charts, summary: summary} =
