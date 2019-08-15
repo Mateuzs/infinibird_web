@@ -1,45 +1,52 @@
 defmodule InfinibirdWeb.ChartsView do
   use InfinibirdWeb, :view
 
-  def pie_chart_data(conn) do
-    case conn.assigns[:pie_chart_data] do
+  def get_speed_profile_chart_data(conn) do
+    case conn.assigns[:speed_profile_chart_data] do
       nil -> []
-      pie_chart_data -> pie_chart_data
+      data -> data
     end
   end
 
-  def line_chart_data(conn) do
-    case conn.assigns[:line_chart_data] do
+  def get_km_7days_chart_data(conn) do
+    case conn.assigns[:km_7days_chart_data] do
       nil -> []
-      line_chart_data -> line_chart_data
+      data -> data
     end
   end
 
-  def column_chart_data(conn) do
-    case conn.assigns[:column_chart_data] do
+  def get_rides_amount_7days_chart_data(conn) do
+    case conn.assigns[:rides_amount_7days_chart_data] do
       nil -> []
-      column_chart_data -> column_chart_data
+      data -> data
     end
   end
 
-  def area_chart_data(conn) do
-    case conn.assigns[:area_chart_data] do
+  def get_time_in_car_7days_chart_data(conn) do
+    case conn.assigns[:time_in_car_7days_chart_data] do
       nil -> []
-      area_chart_data -> area_chart_data
+      data -> data
     end
   end
 
-  def geo_chart_data(conn) do
-    case conn.assigns[:geo_chart_data] do
+  def get_km_3months_chart_data(conn) do
+    case conn.assigns[:km_3months_chart_data] do
       nil -> []
-      geo_chart_data -> geo_chart_data
+      data -> data
     end
   end
 
-  def multilines_chart_data(conn) do
-    case conn.assigns[:multilines_chart_data] do
+  def get_acc_dec_chart_data(conn) do
+    case conn.assigns[:acc_dec_chart_data] do
       nil -> []
-      multilines_chart_data -> multilines_chart_data
+      data -> data
+    end
+  end
+
+  def get_turns_chart_data(conn) do
+    case conn.assigns[:turns_chart_data] do
+      nil -> []
+      data -> data
     end
   end
 end
