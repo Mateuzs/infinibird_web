@@ -19,8 +19,10 @@ import drawTrip from "../js/drawTrip";
 let liveSocket = new LiveSocket("/live");
 liveSocket.connect();
 
-// do JS stuff
+// configure charts
+Chartkick.configure({ language: "pl" });
 window.Chartkick = Chartkick;
+
 window.L = L;
 window.integrateMap = integrateMap;
 window.drawTrip = drawTrip;

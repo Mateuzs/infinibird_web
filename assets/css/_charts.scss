@@ -33,3 +33,36 @@
   border: 2px solid $dark-blue;
   border-radius: $base-radius;
 }
+
+.charts__chart--horizontal {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 0;
+  padding-left: 5%;
+  padding-right: 5%;
+  justify-content: space-between;
+  border-radius: $base-radius;
+}
+
+.charts__chart--short-left {
+  display: flex;
+  flex-basis: 40%;
+  min-width: 400px;
+  flex-grow: 1;
+  margin-bottom: 1vh;
+  margin-top: 1vh;
+  border: 2px solid $dark-blue;
+  border-radius: $base-radius;
+}
+
+.charts__chart--short-right {
+  display: flex;
+  flex-basis: 40%;
+  min-width: 400px;
+  margin-bottom: 1vh;
+  margin-top: 1vh;
+  border: 2px solid $dark-blue;
+  border-radius: $base-radius;
+  flex-grow: 1;
+}
