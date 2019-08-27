@@ -2,16 +2,79 @@
 
 <div>
     <div class="charts__description-block"> 
-        <h2> Sample charts generated with data fetched from infinibird_service</h2>
+        <h2> Statystyki przejazdów </h2>
     </div>
 
     <ul class="charts__container">
-        <li class="charts__chart"> <%= raw Chartkick.pie_chart pie_chart_data(@conn) %> </li>
-        <li class="charts__chart"> <%= raw Chartkick.line_chart line_chart_data(@conn) %> </li>
-        <li class="charts__chart"> <%= raw Chartkick.column_chart column_chart_data(@conn) %> </li>
-        <li class="charts__chart"> <%= raw Chartkick.area_chart area_chart_data(@conn) %> </li>
-        <li class="charts__chart"> <%= raw Chartkick.line_chart multilines_chart_data(@conn) %> </li>
-        <li class="charts__chart"> <%= raw Chartkick.geo_chart geo_chart_data(@conn) %> </li>
-    </ul>
+        <li class="charts__chart"> 
+            <%= raw Chartkick.column_chart get_speed_profile_chart_data(@conn),
+                    library: %{
+                        title: "Profil prędkości kierowcy",
+                        vAxis: %{title: "Czas jazdy", format: "##,##%"}, 
+                        hAxis: %{title: "Prędkość w km/h"}, 
+                        colors: ["blue"],
+                    },
 
+                    name: "Prędkość"
+                     %>             
+        </li>
+        <li class="charts__chart"> 
+            <%= raw Chartkick.line_chart get_km_7days_chart_data(@conn), 
+                library: %{
+                        title: "Przejechane kilometry w ostatnich 7 dniach",
+                        vAxis: %{title: "Liczba kilometrów"}, 
+                        hAxis: %{title: "Dzień"}, 
+                        colors: ["purple"],
+                    }
+                     %>             
+        </li>
+        <li class="charts__chart"> 
+            <%= raw Chartkick.line_chart get_rides_amount_7days_chart_data(@conn), 
+                    library: %{
+                        title: "Liczba przejazdów w ostatnich 7 dniach",
+                        vAxis: %{title: "Liczba przejazdów"}, 
+                        hAxis: %{title: "Dzień"}, 
+                        colors: ["red"],
+                    }
+                     %>             
+        </li>
+        <li class="charts__chart"> 
+            <%= raw Chartkick.area_chart get_time_in_car_7days_chart_data(@conn),
+                    library: %{
+                        title: "Czas spędzony w samochodzie w ostatnich 7 dniach",
+                        vAxis: %{title: "Liczba minut"}, 
+                        hAxis: %{title: "Dzień"}, 
+                        colors: ["green"],
+                        pointSize: 5,
+                    }
+                     %>              
+        </li>
+        <li class="charts__chart"> 
+            <%= raw Chartkick.line_chart get_km_3months_chart_data(@conn),
+                    library: %{
+                        title: "Przejechane kilometry na przestrzeni 3 miesięcy",
+                        vAxis: %{title: "Liczba kilometrów"}, 
+                        hAxis: %{title: "Dzień"}, 
+                    }
+                     %>              
+        </li>
+        <li class="charts__chart--horizontal"> 
+            <div class="charts__chart--short-left">
+                <%= raw Chartkick.pie_chart get_acc_dec_chart_data(@conn),
+                    library: %{
+                        title: "Liczba przyspieszeń oraz zahamowań pojazdu",
+                        colors: ["green", "orange"],
+                    }, donut: true
+                     %>     
+            </div>
+            <div class="charts__chart--short-right">
+                <%= raw Chartkick.pie_chart get_turns_chart_data(@conn),
+                    library: %{
+                        title: "Liczba manewrów skrętu pojazdu",
+                        colors: ["purple", "cyan"],
+                    }, donut: true
+                     %>          
+            </div>  
+        </li>
+    </ul>
 </div>

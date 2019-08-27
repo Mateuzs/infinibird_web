@@ -12,12 +12,14 @@ defmodule InfinibirdWeb.ChartsController do
       end
 
     render(conn, "index.html",
-      pie_chart_data: Jason.encode!(Map.get(charts, :pie_chart_data)),
-      line_chart_data: Jason.encode!(Map.get(charts, :line_chart_data)),
-      column_chart_data: Jason.encode!(Map.get(charts, :column_chart_data)),
-      area_chart_data: Jason.encode!(Map.get(charts, :area_chart_data)),
-      geo_chart_data: Jason.encode!(Map.get(charts, :geo_chart_data)),
-      multilines_chart_data: Jason.encode!(Map.get(charts, :multilines_chart_data))
+      speed_profile_chart_data: Jason.encode!(Map.get(charts, :speed_profile_chart_data)),
+      km_7days_chart_data: Jason.encode!(Map.get(charts, :km_7days_chart_data)),
+      rides_amount_7days_chart_data:
+        Jason.encode!(Map.get(charts, :rides_amount_7days_chart_data)),
+      time_in_car_7days_chart_data: Jason.encode!(Map.get(charts, :time_in_car_7days_chart_data)),
+      km_3months_chart_data: Jason.encode!(Map.get(charts, :km_3months_chart_data)),
+      acc_dec_chart_data: Jason.encode!(Map.get(charts, :acc_dec_chart_data)),
+      turns_chart_data: Jason.encode!(Map.get(charts, :turns_chart_data))
     )
   end
 end

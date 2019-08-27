@@ -13,9 +13,15 @@ defmodule InfinibirdWeb.TripView do
      |> assign(distance: "")
      |> assign(travel_time: "")
      |> assign(average_speed: "")
+     |> assign(max_speed: "")
      |> assign(time_start: "")
      |> assign(time_end: "")
-     |> assign(trips: trips)}
+     |> assign(acc_amount: "")
+     |> assign(dec_amount: "")
+     |> assign(stp_amount: "")
+     |> assign(lt_amount: "")
+     |> assign(rt_amount: "")
+     |> assign(trips: Map.to_list(trips))}
   end
 
   def handle_event("get-user-data", value, socket) do
@@ -39,16 +45,28 @@ defmodule InfinibirdWeb.TripView do
         hours -> "#{hours} h #{rem(travel_time_minutes, 60)} min"
       end
 
-    speed_km_h = (distance / 1000 / (travel_time_minutes / 60)) |> Kernel.trunc()
+    speed_km_h =
+      case travel_time_minutes do
+        0 -> 0
+        _more_than_0 -> (distance / 1000 / (travel_time_minutes / 60)) |> Kernel.trunc()
+      end
 
     average_speed_string = "#{speed_km_h} km/h"
+
+    max_speed = "#{Kernel.trunc(trips[trip].max_speed * 3.6)} km/h"
 
     {:noreply,
      socket
      |> assign(distance: distance_string)
      |> assign(travel_time: travel_time_string)
      |> assign(average_speed: average_speed_string)
+     |> assign(max_speed: max_speed)
      |> assign(time_start: trips[trip].start_time)
-     |> assign(time_end: trips[trip].end_time)}
+     |> assign(time_end: trips[trip].end_time)
+     |> assign(acc_amount: trips[trip].acceleration_amount)
+     |> assign(dec_amount: trips[trip].deceleration_amount)
+     |> assign(stp_amount: trips[trip].stoppings_amount)
+     |> assign(lt_amount: trips[trip].left_turns_amount)
+     |> assign(rt_amount: trips[trip].right_turns_amount)}
   end
 end
