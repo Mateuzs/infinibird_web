@@ -130,7 +130,7 @@ html {
   padding: 0;
   display: flex;
   justify-content: center;
-  flex-grow: 1;
+  flex: 1 0 auto;
   justify-content: center;
 }
 .body__container::-webkit-scrollbar {
@@ -149,7 +149,6 @@ html {
   font-size: 0.8em;
   text-align: center;
   flex-shrink: 0;
-  z-index: 10;
 }
 
 /********** modifiers ***********/

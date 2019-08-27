@@ -21,7 +21,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   flex-grow: 1;
-  margin-bottom: 7em;
+  margin-bottom: 8em;
 }
 
 .charts__chart {
@@ -47,7 +47,7 @@
 
 .charts__chart--short-left {
   display: flex;
-  flex-basis: 40%;
+  flex-basis: 50%;
   min-width: 400px;
   flex-grow: 1;
   margin-bottom: 1vh;
@@ -58,7 +58,7 @@
 
 .charts__chart--short-right {
   display: flex;
-  flex-basis: 40%;
+  flex-basis: 50%;
   min-width: 400px;
   margin-bottom: 1vh;
   margin-top: 1vh;

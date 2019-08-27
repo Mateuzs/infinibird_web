@@ -23,7 +23,9 @@
   width: 20vw;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .trips__details-header {
@@ -77,6 +79,11 @@
   color: $base-background-color;
   border-radius: $base-radius;
   border: $dark-blue solid 2px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  min-height: 0;
+  height: 100px;
+  overflow: scroll;
 }
 
 .trips__trip {
