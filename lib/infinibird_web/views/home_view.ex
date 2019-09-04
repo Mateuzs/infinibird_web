@@ -13,6 +13,14 @@ defmodule InfinibirdWeb.HomeView do
     conn.assigns[:average_speed]
   end
 
+  def max_speed(conn) do
+    conn.assigns[:max_speed]
+  end
+
+  def longest_ride(conn) do
+    conn.assigns[:longest_ride]
+  end
+
   def safety_index(conn) do
     conn.assigns[:safety_index] |> String.trim("\"")
   end

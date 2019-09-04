@@ -15,6 +15,7 @@ defmodule InfinibirdWeb.HomeController do
       amount_of_km: Jason.encode!(Map.get(summary, :amount_of_km)),
       number_of_trips: Jason.encode!(Map.get(summary, :number_of_trips)),
       average_speed: Jason.encode!(Map.get(summary, :average_speed)),
+      # max_speed: Jason.encode!(Map.get(summary, :max_speed)),
       safety_index: Jason.encode!(Map.get(summary, :safety_index))
     )
   end
