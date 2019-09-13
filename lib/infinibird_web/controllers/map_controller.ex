@@ -3,8 +3,8 @@ defmodule InfinibirdWeb.MapController do
   alias Phoenix.LiveView
 
   def index(conn, _params) do
-    user_id = Plug.Conn.get_session(conn, :current_user_id)
-    data = Infinibird.Cache.get(user_id, :trips) |> Bson.decode()
+    device_id = Plug.Conn.get_session(conn, :current_device_id)
+    data = Infinibird.Cache.get(device_id, :trips) |> Bson.decode()
 
     LiveView.Controller.live_render(conn, InfinibirdWeb.TripView, session: %{data: data})
   end

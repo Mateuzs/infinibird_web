@@ -4,6 +4,8 @@ defmodule InfinibirdWeb.HomeController do
   def index(conn, _params) do
     user_id = Plug.Conn.get_session(conn, :current_user_id)
 
+    IO.inspect(Plug.Conn.get_session(conn, :current_device_id))
+
     %{charts: _charts, summary: summary} =
       Infinibird.Cache.get(user_id, :summary)
       |> case do

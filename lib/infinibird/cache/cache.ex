@@ -1,11 +1,11 @@
 defmodule Infinibird.Cache do
   require Logger
 
-  def get(user_id, data_type, opts \\ []) do
-    case lookup(user_id, data_type) do
+  def get(device_id, data_type, opts \\ []) do
+    case lookup(device_id, data_type) do
       nil ->
         ttl = Keyword.get(opts, :ttl, 120)
-        cache_apply(user_id, data_type, ttl)
+        cache_apply(device_id, data_type, ttl)
 
       result ->
         Logger.info("reading data from cache")
@@ -13,8 +13,8 @@ defmodule Infinibird.Cache do
     end
   end
 
-  defp lookup(user_id, data_type) do
-    case :ets.lookup(:infinibird_cache, [user_id, data_type]) do
+  defp lookup(device_id, data_type) do
+    case :ets.lookup(:infinibird_cache, [device_id, data_type]) do
       [result | _] -> check_freshness(result)
       [] -> nil
     end
@@ -27,7 +27,7 @@ defmodule Infinibird.Cache do
     end
   end
 
-  defp cache_apply(user_id, data_type, ttl) do
+  defp cache_apply(device_id, data_type, ttl) do
     [username: username, password: password, realm: _realm] =
       Application.get_env(:infinibird, :infinibird_service_basic_auth_config)
 
@@ -40,7 +40,7 @@ defmodule Infinibird.Cache do
         :summary ->
           HTTPoison.get(
             "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/summary",
-            [{"content-type", "application/json"}, {"Authorization", "Basic #{credentials}"}]
+            [{"content-type", "application/bson"}, {"Authorization", "Basic #{credentials}"}]
           )
           |> case do
             {:error, _error} ->
@@ -54,8 +54,10 @@ defmodule Infinibird.Cache do
 
         :trips ->
           HTTPoison.get(
-            "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/trips",
-            [{"content-type", "application/json"}, {"Authorization", "Basic #{credentials}"}]
+            "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/trips/#{
+              device_id
+            }",
+            [{"content-type", "application/bson"}, {"Authorization", "Basic #{credentials}"}]
           )
           |> case do
             {:error, _error} ->
@@ -76,14 +78,14 @@ defmodule Infinibird.Cache do
 
     result = Map.get(response, :body, %{})
 
-    :ets.insert(:infinibird_cache, {[user_id, data_type], result, expiration})
+    :ets.insert(:infinibird_cache, {[device_id, data_type], result, expiration})
 
     Logger.info(:ets.info(:infinibird_cache, :size))
     result
   end
 
-  def delete(user_id) do
-    :ets.delete(:infinibird_cache, [user_id, :trips])
-    :ets.delete(:infinibird_cache, [user_id, :summary])
+  def delete(device_id) do
+    :ets.delete(:infinibird_cache, [device_id, :trips])
+    :ets.delete(:infinibird_cache, [device_id, :summary])
   end
 end

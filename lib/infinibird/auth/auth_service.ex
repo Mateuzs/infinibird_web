@@ -1,29 +1,53 @@
 defmodule Infinibird.Auth.AuthService do
-  # These values must be moved to a configuration file
-  # a good way to generate:
-  # :crypto.strong_rand_bytes(30)
-  # |> Base.url_encode64
-  # |> binary_part(0, 30)
-  @salt "a5G6A24zx5c"
-  @secret "faSlfzE4g8k7kTxvFAgeBvAVA0OR1vkPbTi8mZ5m"
-  @encrypted_key Argon2.hash_pwd_salt("12345678")
+  require Logger
 
-  def authorise(key) do
-    case Argon2.verify_pass(key, @encrypted_key) do
-      true -> :authorised
-      false -> :unauthorised
+  def authorise(user_password) do
+    [username: username, password: password, realm: _realm] =
+      Application.get_env(:infinibird, :infinibird_service_basic_auth_config)
+
+    credentials = "#{username}:#{password}" |> Base.encode64()
+
+    [argon_salt: argon_salt] = Application.get_env(:infinibird, :argon)
+
+    hashed_password = Argon2.Base.hash_password(user_password, argon_salt, format: :raw_hash)
+
+    Logger.info("authorising user in infinibird_service")
+
+    HTTPoison.post(
+      "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/authorise",
+      Jason.encode!(%{password: hashed_password}),
+      [{"Content-type", "application/json"}, {"Authorization", "Basic #{credentials}"}]
+    )
+    |> case do
+      {:error, _error} ->
+        Logger.error("Cannot connect to infinibird_service!")
+        {:unauthorised}
+
+      {:ok, response} ->
+        Logger.info("get response from infinibird_service")
+
+        res = Jason.decode!(response.body)
+
+        case res["authorised"] do
+          true -> {:authorised, hashed_password, res["device_id"]}
+          false -> {:unauthorised}
+        end
     end
   end
 
   @spec generate_token(any()) :: any()
   def generate_token(id) do
-    Phoenix.Token.sign(@secret, @salt, id, max_age: 86400)
+    token_gen_data = Application.get_env(:phoenix, :phoenix_token_data)
+
+    Phoenix.Token.sign(token_gen_data.secret, token_gen_data.salt, id, max_age: 86400)
   end
 
   @spec verify_token(nil | binary()) ::
           {:error, :expired | :invalid | :missing} | {:ok, nil | binary()}
   def verify_token(token) do
-    case Phoenix.Token.verify(@secret, @salt, token, max_age: 86400) do
+    token_gen_data = Application.get_env(:phoenix, :phoenix_token_data)
+
+    case Phoenix.Token.verify(token_gen_data.secret, token_gen_data.salt, token, max_age: 86400) do
       {:ok, _id} -> {:ok, token}
       error -> error
     end
@@ -54,13 +78,4 @@ defmodule Infinibird.Auth.AuthService do
         end
     end
   end
-
-  # defp get_token_from_header(auth_header) do
-  #   {:ok, reg} = Regex.compile("Bearer\:?\s+(.*)$", "i")
-
-  #   case Regex.run(reg, auth_header) do
-  #     [_, match] -> {:ok, String.trim(match)}
-  #     _ -> {:error, nil}
-  #   end
-  # end
 end
