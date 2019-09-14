@@ -21,7 +21,7 @@ defmodule Infinibird.Auth.User do
 
   @spec sign_out(Plug.Conn.t()) :: Plug.Conn.t()
   def sign_out(conn) do
-    Infinibird.Cache.delete(Plug.Conn.get_session(conn, :current_user_id))
+    Infinibird.Cache.delete(Plug.Conn.get_session(conn, :current_device_id))
     Logger.info("Deleted cached user data")
 
     Plug.Conn.configure_session(conn, drop: true)

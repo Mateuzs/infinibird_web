@@ -2,23 +2,18 @@ defmodule InfinibirdWeb.HomeController do
   use InfinibirdWeb, :controller
 
   def index(conn, _params) do
-    user_id = Plug.Conn.get_session(conn, :current_user_id)
+    device_id = Plug.Conn.get_session(conn, :current_device_id)
 
-    IO.inspect(Plug.Conn.get_session(conn, :current_device_id))
 
-    %{charts: _charts, summary: summary} =
-      Infinibird.Cache.get(user_id, :summary)
-      |> case do
-        %{} -> %{charts: %{}, summary: %{}}
-        result -> Bson.decode(result)
-      end
+    summary = Infinibird.Cache.get(device_id, :summary)
 
     render(conn, "index.html",
-      amount_of_km: Jason.encode!(Map.get(summary, :amount_of_km)),
-      number_of_trips: Jason.encode!(Map.get(summary, :number_of_trips)),
-      average_speed: Jason.encode!(Map.get(summary, :average_speed)),
-      # max_speed: Jason.encode!(Map.get(summary, :max_speed)),
-      safety_index: Jason.encode!(Map.get(summary, :safety_index))
+      distance_meters: Map.get(summary, :distance_meters),
+      number_of_trips: Map.get(summary, :number_of_trips),
+      average_speed: Map.get(summary, :average_speed),
+      max_speed: Map.get(summary, :max_speed),
+      travel_time_minutes: Map.get(summary, :travel_time_minutes),
+      longest_ride: Map.get(summary, :longest_ride)
     )
   end
 end

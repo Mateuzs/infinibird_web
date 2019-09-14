@@ -1,5 +1,6 @@
 defmodule Infinibird.Cache do
   require Logger
+  alias Infinibird.RidesMetricsProcessor
 
   def get(device_id, data_type, opts \\ []) do
     case lookup(device_id, data_type) do
@@ -35,21 +36,42 @@ defmodule Infinibird.Cache do
 
     Logger.info("fetching data from infinibird_service")
 
-    {:ok, response} =
+    processed_data =
       case data_type do
         :summary ->
           HTTPoison.get(
-            "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/summary",
+            "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/rides_metrics/#{
+              device_id
+            }",
             [{"content-type", "application/bson"}, {"Authorization", "Basic #{credentials}"}]
           )
           |> case do
             {:error, _error} ->
               Logger.error("Cannot connect to infinibird_service!")
-              {:ok, %{}}
+              %{}
 
             {:ok, response} ->
               Logger.info("fetched data from infinibird_service")
-              {:ok, response}
+              params = Jason.decode!(response.body)
+
+              RidesMetricsProcessor.prepare_summary_data(params)
+          end
+
+        :charts ->
+          HTTPoison.get(
+            "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/rides_metrics/#{
+              device_id
+            }",
+            [{"content-type", "application/bson"}, {"Authorization", "Basic #{credentials}"}]
+          )
+          |> case do
+            {:error, _error} ->
+              Logger.error("Cannot connect to infinibird_service!")
+              %{}
+
+            {:ok, response} ->
+              Logger.info("fetched data from infinibird_service")
+              response.body
           end
 
         :trips ->
@@ -62,30 +84,32 @@ defmodule Infinibird.Cache do
           |> case do
             {:error, _error} ->
               Logger.error("Cannot connect to infinibird_service!")
-              {:ok, %{}}
+              %{}
 
             {:ok, response} ->
               Logger.info("fetched data from infinibird_service")
-              {:ok, response}
+              response.body
           end
       end
 
     expiration =
-      case response do
+      case processed_data do
         map when map == %{} -> :os.system_time(:seconds)
         _map -> :os.system_time(:seconds) + ttl
       end
 
-    result = Map.get(response, :body, %{})
 
-    :ets.insert(:infinibird_cache, {[device_id, data_type], result, expiration})
+
+    :ets.insert(:infinibird_cache, {[device_id, data_type], processed_data, expiration})
 
     Logger.info(:ets.info(:infinibird_cache, :size))
-    result
+    processed_data
   end
 
   def delete(device_id) do
     :ets.delete(:infinibird_cache, [device_id, :trips])
     :ets.delete(:infinibird_cache, [device_id, :summary])
+    :ets.delete(:infinibird_cache, [device_id, :charts])
+
   end
 end
