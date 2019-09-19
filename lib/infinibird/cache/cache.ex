@@ -52,9 +52,9 @@ defmodule Infinibird.Cache do
 
             {:ok, response} ->
               Logger.info("fetched data from infinibird_service")
-              params = Jason.decode!(response.body)
+              result = Jason.decode!(response.body)
 
-              RidesMetricsProcessor.prepare_summary_data(params)
+              RidesMetricsProcessor.prepare_summary_data(result)
           end
 
         :charts ->

@@ -3,16 +3,16 @@
         <h2>Witaj! Poniżej przedstawione są najciekawsze fakty z Twoich podróży:</h2>
     </div>
     <div class="tiles-container">
-        <div class="tiles-container__tile">
-            Przejechany dystans 
-            <%= if distance(@conn) !== nil do %>
-                <p class="tiles-container__tile-description"><%= distance(@conn) %> </p> 
+        <div class="tiles-container__tile"> 
+            Najdłuższa podróż:
+            <%= if longest_ride(@conn) !== nil do %>
+                <p class="tiles-container__tile-description"><%= longest_ride(@conn) %> </p> 
             <% else %>
                 <p class="tiles-container__tile-description">brak danych</p> 
             <% end  %>
         </div>
         <div class="tiles-container__tile">
-            Czas spędzony w podróży 
+            Czas spędzony w podróżach: 
             <%= if travel_time(@conn) !== nil do %>
                 <p class="tiles-container__tile-description"><%= travel_time(@conn) %> </p> 
             <% else %>
@@ -20,36 +20,60 @@
             <% end  %>
         </div>
         <div class="tiles-container__tile">
-            Liczba przejazdów 
-            <%= if number_of_trips(@conn) !== nil do %>
-                <p class="tiles-container__tile-description"><%= number_of_trips(@conn) %>  </p> 
+            Przejechany dystans: 
+            <%= if distance(@conn) !== nil do %>
+                <p class="tiles-container__tile-description"><%= distance(@conn) %> </p> 
             <% else %>
                 <p class="tiles-container__tile-description">brak danych</p> 
             <% end  %>
-            </div>
-            <div class="tiles-container__tile"> 
-            Średnia prędkość 
+        </div>
+        <div class="tiles-container__tile"> 
+            Średnia prędkość: 
             <%= if average_speed(@conn) !== nil do %>
                 <p class="tiles-container__tile-description"><%= average_speed(@conn) %> km/h </p> 
             <% else %>
                 <p class="tiles-container__tile-description">brak danych</p> 
             <% end  %>
-            </div>
-            <div class="tiles-container__tile"> 
-            Maksymalna prędkość 
+        </div>
+        <div class="tiles-container__tile"> 
+            Maksymalna prędkość: 
             <%= if max_speed(@conn) !== nil do %>
                 <p class="tiles-container__tile-description"><%= max_speed(@conn) %> km/h </p> 
             <% else %>
                 <p class="tiles-container__tile-description">brak danych</p> 
             <% end  %>
-            </div>
-            <div class="tiles-container__tile"> 
-            Najdłuższa podróż
-            <%= if longest_ride(@conn) !== nil do %>
-                <p class="tiles-container__tile-description"><%= longest_ride(@conn) %> </p> 
+        </div>
+         <div class="tiles-container__tile"> 
+            Maksymalne przyspieszenie: 
+            <%= if max_acceleration(@conn) !== nil do %>
+                <p class="tiles-container__tile-description"><%= max_acceleration(@conn) %> m/s<sup>2</sup> </p> 
             <% else %>
                 <p class="tiles-container__tile-description">brak danych</p> 
             <% end  %>
-            </div>
+        </div>
+        <div class="tiles-container__tile">
+            Liczba przejazdów: 
+            <%= if number_of_trips(@conn) !== nil do %>
+                <p class="tiles-container__tile-description"><%= number_of_trips(@conn) %>  </p> 
+            <% else %>
+                <p class="tiles-container__tile-description">brak danych</p> 
+            <% end  %>
+        </div>
+        <div class="tiles-container__tile"> 
+            Ulubiony dzień na jazdę:
+            <%= if most_famous_day(@conn) !== nil do %>
+                <p class="tiles-container__tile-description"><%= most_famous_day(@conn) %> </p> 
+            <% else %>
+                <p class="tiles-container__tile-description">brak danych</p> 
+            <% end  %>
+        </div>
+        <div class="tiles-container__tile"> 
+            Ulubiona pora dnia na jazdę:
+            <%= if most_famous_time_of_day(@conn) !== nil do %>
+                <p class="tiles-container__tile-description"><%= most_famous_time_of_day(@conn) %> </p> 
+            <% else %>
+                <p class="tiles-container__tile-description">brak danych</p> 
+            <% end  %>
+        </div>
     </div>
 </div>

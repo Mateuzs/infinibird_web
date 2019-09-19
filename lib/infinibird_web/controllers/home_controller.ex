@@ -13,7 +13,10 @@ defmodule InfinibirdWeb.HomeController do
       average_speed: Map.get(summary, :average_speed),
       max_speed: Map.get(summary, :max_speed),
       travel_time_minutes: Map.get(summary, :travel_time_minutes),
-      longest_ride: Map.get(summary, :longest_ride)
+      longest_ride: Map.get(summary, :longest_ride),
+      most_famous_day: Map.get(summary, :most_famous_day),
+      most_famous_time_of_day: Map.get(summary, :most_famous_time_of_day),
+      max_acceleration: Map.get(summary, :max_acceleration)
     )
   end
 end
