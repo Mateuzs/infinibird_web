@@ -15,9 +15,10 @@ defmodule InfinibirdWeb.LoginController do
 
   def create(conn, credentials) do
     case User.sign_in(Map.get(credentials, "key")) do
-      {:ok, user_id} ->
+      {:ok, user_id, device_id} ->
         conn
         |> put_session(:current_user_id, user_id)
+        |> put_session(:current_device_id, device_id)
         |> redirect(to: "/")
 
       {:error, _error} ->

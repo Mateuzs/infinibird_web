@@ -8,8 +8,6 @@ defmodule Infinibird.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start the Ecto repository
-      Infinibird.Repo,
       # Start the endpoint when the application starts
       InfinibirdWeb.Endpoint
       # Starts a worker by calling: Infinibird.Worker.start_link(arg)

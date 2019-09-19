@@ -43,3 +43,11 @@ config :infinibird,
     password: "cGFzc3dvcmRfc3VwZXJfc2VjcmV0",
     realm: "Infinibird Area"
   ]
+
+# token crucial data
+config :phoenix, :phoenix_token_data,
+  salt: "a5G6A24zx5c",
+  secret: "faSlfzE4g8k7kTxvFAgeBvAVA0OR1vkPbTi8mZ5m"
+
+# argon salt to hash a password
+config :infinibird, :argon, argon_salt: "J+pwEEoGNeHnBfgB"
