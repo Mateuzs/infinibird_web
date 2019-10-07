@@ -5,7 +5,7 @@ defmodule InfinibirdWeb.HomeView do
     case conn.assigns[:distance_meters] do
       nil -> nil
       distance when distance < 1000 -> "#{distance}m"
-      distance -> "#{Kernel.trunc(distance/1000)}km #{rem(distance, 1000)}m"
+      distance -> "#{Kernel.trunc(distance / 1000)}km #{rem(distance, 1000)}m"
     end
   end
 
@@ -29,7 +29,7 @@ defmodule InfinibirdWeb.HomeView do
     case conn.assigns[:longest_ride] do
       nil -> nil
       distance when distance < 1000 -> "#{distance}m"
-      distance -> "#{Kernel.trunc(distance/1000)}km #{rem(distance, 1000)}m"
+      distance -> "#{Kernel.trunc(distance / 1000)}km #{rem(distance, 1000)}m"
     end
   end
 
@@ -37,7 +37,7 @@ defmodule InfinibirdWeb.HomeView do
     case conn.assigns[:travel_time_minutes] do
       nil -> nil
       time when time < 60 -> "#{time}min"
-      time -> "#{Kernel.trunc(time/60)}hrs #{rem(time, 60)}min"
+      time -> "#{Kernel.trunc(time / 60)}hrs #{rem(time, 60)}min"
     end
   end
 
@@ -56,12 +56,12 @@ defmodule InfinibirdWeb.HomeView do
 
   def most_famous_time_of_day(conn) do
     case conn.assigns[:most_famous_time_of_day] do
-    nil -> nil
-    "night" -> "noc"
-    "morning" -> "poranek"
-    "midday" -> "południe"
-    "afternoon" -> "popołudnie"
-    "evening" -> "wieczór"
-  end
+      nil -> nil
+      "night" -> "noc"
+      "morning" -> "poranek"
+      "midday" -> "południe"
+      "afternoon" -> "popołudnie"
+      "evening" -> "wieczór"
+    end
   end
 end

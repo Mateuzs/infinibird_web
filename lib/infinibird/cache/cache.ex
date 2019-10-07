@@ -71,7 +71,9 @@ defmodule Infinibird.Cache do
 
             {:ok, response} ->
               Logger.info("fetched data from infinibird_service")
-              response.body
+              result = Jason.decode!(response.body) |>  Map.get("charts", [])
+
+             result
           end
 
         :trips ->
@@ -99,10 +101,10 @@ defmodule Infinibird.Cache do
       end
 
 
-
+    IO.inspect(processed_data)
+    IO.puts("dupsko")
     :ets.insert(:infinibird_cache, {[device_id, data_type], processed_data, expiration})
 
-    Logger.info(:ets.info(:infinibird_cache, :size))
     processed_data
   end
 

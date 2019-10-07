@@ -3,6 +3,52 @@ let startMarker;
 let endMarker;
 let mapPoints;
 
+const mapManeuverTypeToColor = maneuver => {
+  const maneuverColorMap = {
+    acceleration: "#53eb34",
+    accelerationFollowedByDeceleration: "#34eb67",
+    accelerationOverloadEvent: "#96eb34",
+    deceleration: "#ebcd34",
+    decelerationFollowedByAcceleration: "#e8eb34",
+    constantSpeed: "#34ebdf",
+    stop: "#d634eb",
+    rightTurn: "#a100f1",
+    leftTurn: "#f100a1",
+    activity: "#9ad6e5",
+    jerking: "#eb5634",
+    sharp: "#a40000"
+  };
+
+  if (!maneuverColorMap[maneuver]) {
+    return "#000000";
+  }
+
+  return maneuverColorMap[maneuver];
+};
+
+const translateManeuverType = maneuver => {
+  const maneuverTypeMap = {
+    acceleration: "przyspieszenie",
+    accelerationFollowedByDeceleration: "przyspieszenie po hamowaniu",
+    deceleration: "zwalnianie",
+    decelerationFollowedByAcceleration: "zwalnianie po przyspieszeniu",
+    accelerationOverloadEvent: "przeciązenie przyspieszenia",
+    constantSpeed: "prędkość stała",
+    stop: "stop",
+    rightTurn: "skręt w prawo",
+    leftTurn: "skręt w lewo",
+    activity: "aktywność",
+    jerking: "szarpanie",
+    sharp: "szarpnięcie"
+  };
+
+  if (!maneuverTypeMap[maneuver]) {
+    return "nierozpoznany manewr";
+  }
+
+  return maneuverTypeMap[maneuver];
+};
+
 export default function drawTrip(points) {
   var maymap = window.mymap;
 
@@ -26,17 +72,19 @@ export default function drawTrip(points) {
 
   mapPoints = points.map(point => {
     const mapPoint = L.circle(point, {
-      color: "#d037e4",
-      fillColor: "#d037e4",
+      color: mapManeuverTypeToColor(point.man_type),
+      fillColor: mapManeuverTypeToColor(point.man_type),
       fillOpacity: 1,
       radius: 10
     }).addTo(mymap);
 
     var kmh = (point.mps * 3.6).toFixed(2);
     mapPoint.bindPopup(
-      `<b>długość geograficzna: ${point.lon} 
+      `
+       <h6> ${translateManeuverType(point.man_type)}</h6>
+       <b>długość geograficzna: ${point.lon} 
        </br>szerokość geograficzna: ${point.lat}
-       </br>wysokość nad poziomem morza: ${point.alt} m
+       </br>wysokość nad poziomem morza: ${Math.trunc(point.alt)} m
        </br>prędkość: ${kmh} km/h
        </br>czas: ${point.tim}
 
