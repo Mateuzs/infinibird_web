@@ -1,11 +1,13 @@
 defmodule Infinibird.Cache do
   require Logger
   alias Infinibird.RidesMetricsProcessor
+  alias Infinibird.DataProvider
 
+  @spec get(String.t(), atom, List.atom()) :: any
   def get(device_id, data_type, opts \\ []) do
     case lookup(device_id, data_type) do
       nil ->
-        ttl = Keyword.get(opts, :ttl, 120)
+        ttl = Keyword.get(opts, :ttl, 1)
         cache_apply(device_id, data_type, ttl)
 
       result ->
@@ -29,89 +31,44 @@ defmodule Infinibird.Cache do
   end
 
   defp cache_apply(device_id, data_type, ttl) do
-    [username: username, password: password, realm: _realm] =
-      Application.get_env(:infinibird, :infinibird_service_basic_auth_config)
-
-    credentials = "#{username}:#{password}" |> Base.encode64()
-
     Logger.info("fetching data from infinibird_service")
 
     processed_data =
       case data_type do
-        :summary ->
-          HTTPoison.get(
-            "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/rides_metrics/#{
-              device_id
-            }",
-            [{"content-type", "application/bson"}, {"Authorization", "Basic #{credentials}"}]
-          )
-          |> case do
-            {:error, _error} ->
-              Logger.error("Cannot connect to infinibird_service!")
-              %{}
+        type when type === :summary or type === :charts ->
+          rides_metrics = DataProvider.get_rides_metrics(device_id)
 
-            {:ok, response} ->
-              Logger.info("fetched data from infinibird_service")
-              result = Jason.decode!(response.body)
+          charts = RidesMetricsProcessor.prepare_charts_data(rides_metrics)
+          summary = RidesMetricsProcessor.prepare_summary_data(rides_metrics)
 
-              RidesMetricsProcessor.prepare_summary_data(result)
+          charts_expiration = get_expiration_time(charts, ttl)
+          summary_expiration = get_expiration_time(summary, ttl)
+
+          :ets.insert(:infinibird_cache, {[device_id, :charts], charts, charts_expiration})
+          :ets.insert(:infinibird_cache, {[device_id, :summary], summary, summary_expiration})
+
+          case data_type do
+            :charts -> charts
+            :summary -> summary
           end
 
-        :charts ->
-          HTTPoison.get(
-            "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/rides_metrics/#{
-              device_id
-            }",
-            [{"content-type", "application/bson"}, {"Authorization", "Basic #{credentials}"}]
-          )
-          |> case do
-            {:error, _error} ->
-              Logger.error("Cannot connect to infinibird_service!")
-              %{}
-
-            {:ok, response} ->
-              Logger.info("fetched data from infinibird_service")
-              result = Jason.decode!(response.body) |>  Map.get("charts", [])
-
-             result
-          end
-
-        :trips ->
-          HTTPoison.get(
-            "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/trips/#{
-              device_id
-            }",
-            [{"content-type", "application/bson"}, {"Authorization", "Basic #{credentials}"}]
-          )
-          |> case do
-            {:error, _error} ->
-              Logger.error("Cannot connect to infinibird_service!")
-              %{}
-
-            {:ok, response} ->
-              Logger.info("fetched data from infinibird_service")
-              response.body
-          end
+        _type ->
+          Logger.error("Unrecognized data type!")
       end
-
-    expiration =
-      case processed_data do
-        map when map == %{} -> :os.system_time(:seconds)
-        _map -> :os.system_time(:seconds) + ttl
-      end
-
-
-    IO.inspect(processed_data)
-    IO.puts("dupsko")
-    :ets.insert(:infinibird_cache, {[device_id, data_type], processed_data, expiration})
 
     processed_data
   end
 
+  @spec delete(String.t()) :: true
   def delete(device_id) do
-    :ets.delete(:infinibird_cache, [device_id, :trips])
     :ets.delete(:infinibird_cache, [device_id, :summary])
     :ets.delete(:infinibird_cache, [device_id, :charts])
+  end
 
+  defp get_expiration_time(processed_data, ttl) do
+    case processed_data do
+      map when map == %{} -> :os.system_time(:seconds)
+      _map -> :os.system_time(:seconds) + ttl
+    end
   end
 end
