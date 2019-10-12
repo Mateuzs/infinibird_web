@@ -27,7 +27,6 @@ defmodule InfinibirdWeb.TripView do
   def handle_event("get-user-data", value, socket) do
     trips = socket.assigns.trips
     trip = String.to_atom(value)
-    trips[trip]
 
     distance = trips[trip].distance_meters
 
