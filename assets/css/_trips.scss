@@ -5,12 +5,18 @@
   height: 100%;
 }
 
+.travels-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .map {
-  width: 79vw;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  display: flex;
+  min-width: 300px;
+  min-height: 500px;
+  flex-basis: 72%;
+  flex-grow: 1;
   border-radius: $base-radius;
   margin: 1%;
   border: $dark-blue solid 2px;
@@ -19,48 +25,48 @@
   color: $dark-blue;
 }
 
+.trips-container {
+  align-content: center;
+  justify-content: center;
+  flex-basis: 20%;
+  flex-grow: 1;
+  min-width: 300px;
+  margin: 1%;
+}
+
 .trips {
-  width: 20vw;
-  display: flex;
   flex-direction: column;
-  height: 100%;
   display: flex;
-  flex-direction: column;
+  width: 100%;
 }
 
 .trips__details-header {
   color: $dark-blue;
-  width: 95%;
+  width: 100%;
   text-align: center;
   font-size: 1.2em;
-  margin-left: 0;
   margin-top: 20px;
 }
 
 .trips__list-header {
   color: $dark-blue;
-  width: 95%;
   text-align: center;
   font-size: 1.2em;
-  margin-left: 0;
 }
 
 .trips__details {
   background: $snow-white;
-  margin: 10px;
-  margin-left: 0;
-  margin-right: 5%;
   margin-bottom: 30px;
   padding: 5px;
   font-size: 1em;
   color: $dark-blue;
   border-radius: $base-radius;
+  padding: 1px;
   border: $dark-blue solid 2px;
   text-align: left;
 }
 
 .trips__details-key {
-  margin: 2px;
   font-size: 1.2em;
 }
 
@@ -71,9 +77,6 @@
 
 .trips__list {
   background: $snow-white;
-  margin: 10px;
-  margin-left: 0;
-  margin-right: 5%;
   padding: 10px;
   font-size: 1.2em;
   color: $base-background-color;
@@ -82,7 +85,6 @@
   flex-shrink: 1;
   flex-grow: 1;
   min-height: 0;
-  height: 100px;
   overflow: scroll;
 }
 
