@@ -93,12 +93,16 @@
 
         <%= if (@conn.request_path === "/map") do %>
           <div class="body__container">
-            <div class="map"> 
-              <div id="map">
-                <script> integrateMap() </script>
+           <div class="travels-container">
+              <div class="map"> 
+                <div id="map">
+                  <script> integrateMap() </script>
+                </div>
+              </div>
+              <div class="trips-container">
+                <%= render(@view_module, @view_template, assigns) %>
               </div>
             </div>
-            <%= render(@view_module, @view_template, assigns) %>
           </div>
         <% else %>
           <div class="body__container">

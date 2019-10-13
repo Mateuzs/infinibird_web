@@ -7,6 +7,8 @@ defmodule Infinibird.ChartsConfig do
         }
   def get_charts_config() do
     %{
+      #### COLUMN CHARTS CONFIGURATION ####
+
       column_charts: [
         %{
           description: %{
@@ -94,6 +96,8 @@ defmodule Infinibird.ChartsConfig do
           end
         }
       ],
+      #### LINE CHARTS CONFIGURATION ####
+
       line_charts: [
         %{
           description: %{
@@ -199,16 +203,10 @@ defmodule Infinibird.ChartsConfig do
               }
             ]
           end
-        },
-        %{
-          description: %{
-            title: "Przejechane kilometry na przestrzeni 3 miesięcy",
-            vAxis: %{title: "Liczba kilometrów"},
-            hAxis: %{title: "Dzień"}
-          },
-          data_extractor: fn data -> [] end
         }
       ],
+      #### AREA CHARTS CONFIGURATION ####
+
       area_charts: [
         %{
           description: %{
@@ -268,13 +266,15 @@ defmodule Infinibird.ChartsConfig do
           end
         }
       ],
+      #### PIE CHARTS CONFIGURATION ####
+
       pie_charts: [
         %{
           description: %{
             title: "Liczba przyspieszeń oraz zahamowań pojazdu",
             colors: ["green", "orange"]
           },
-          donut: true,
+          donut: false,
           data_extractor: fn data ->
             [
               [
@@ -293,7 +293,7 @@ defmodule Infinibird.ChartsConfig do
             title: "Liczba manewrów skrętu pojazdu",
             colors: ["purple", "cyan"]
           },
-          donut: true,
+          donut: false,
           data_extractor: fn data ->
             [
               [

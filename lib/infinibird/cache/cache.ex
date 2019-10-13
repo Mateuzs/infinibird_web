@@ -7,7 +7,7 @@ defmodule Infinibird.Cache do
   def get(device_id, data_type, opts \\ []) do
     case lookup(device_id, data_type) do
       nil ->
-        ttl = Keyword.get(opts, :ttl, 1)
+        ttl = Keyword.get(opts, :ttl, 120)
         cache_apply(device_id, data_type, ttl)
 
       result ->
