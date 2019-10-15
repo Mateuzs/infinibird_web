@@ -16,7 +16,6 @@ defmodule Infinibird.Application do
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    # this is mock for auth user for now, till the database and proper sytem will be delivered
     :ets.new(:infinibird_cache, [:public, :named_table])
     opts = [strategy: :one_for_one, name: Infinibird.Supervisor]
     Supervisor.start_link(children, opts)

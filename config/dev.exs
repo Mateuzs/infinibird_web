@@ -4,7 +4,7 @@ use Mix.Config
 # debugging and code reloading.
 #
 # The watchers configuration can be used to run external
-# watchers to your application. For example, we use it
+# watchers to application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :infinibird, InfinibirdWeb.Endpoint,
   http: [port: 5000],

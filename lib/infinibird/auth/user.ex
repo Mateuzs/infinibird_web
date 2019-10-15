@@ -2,6 +2,7 @@ defmodule Infinibird.Auth.User do
   require Logger
   alias Infinibird.Auth.AuthService
 
+  @spec sign_in(binary) :: {:error, :wrong_key} | {:ok, binary, binary}
   def sign_in(key) do
     case AuthService.authorise(key) do
       {:authorised, user_id, device_id} ->

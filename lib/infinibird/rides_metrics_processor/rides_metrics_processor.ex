@@ -1,5 +1,18 @@
 defmodule Infinibird.RidesMetricsProcessor do
   alias Infinibird.ChartsConfig
+  alias Infinibird.RideMetrics
+
+  @spec prepare_summary_data([%RideMetrics{}]) :: %{
+          average_speed: integer,
+          distance_meters: integer,
+          longest_ride: integer,
+          max_acceleration: float,
+          max_speed: integer,
+          most_famous_day: String.t(),
+          most_famous_time_of_day: String.t(),
+          number_of_trips: integer,
+          travel_time_minutes: integer
+        }
 
   def prepare_summary_data(rides_data) do
     %{
@@ -17,6 +30,7 @@ defmodule Infinibird.RidesMetricsProcessor do
     }
   end
 
+  @spec prepare_charts_data([%RideMetrics{}]) :: map
   def prepare_charts_data(rides_metrics) do
     charts_config = ChartsConfig.get_charts_config()
 

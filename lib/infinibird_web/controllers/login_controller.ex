@@ -2,6 +2,7 @@ defmodule InfinibirdWeb.LoginController do
   use InfinibirdWeb, :controller
   alias Infinibird.Auth.User
 
+  @spec index(Plug.Conn.t(), any) :: Plug.Conn.t()
   def index(conn, _params) do
     case User.authenticate_user(conn) do
       true ->

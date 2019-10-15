@@ -1,5 +1,14 @@
 @import "constants";
 
+.home__description {
+  color: $dark-blue;
+  font-size: 10px;
+  margin-top: 5vh;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2em;
+  text-align: center;
+}
+
 .tiles-container {
   background: transparent;
   margin-top: 50px;
@@ -12,15 +21,6 @@
   flex-wrap: wrap;
   flex-grow: 1;
   margin-bottom: 7em;
-}
-
-.home__description {
-  color: $dark-blue;
-  font-size: 10px;
-  margin-top: 5vh;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2em;
-  text-align: center;
 }
 
 .tiles-container__tile {

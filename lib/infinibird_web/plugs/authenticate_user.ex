@@ -2,6 +2,7 @@ defmodule InfinibirdWeb.Plugs.AuthenticateUser do
   import Plug.Conn
   import Phoenix.Controller
 
+  @spec init(any) :: nil
   def init(_params) do
   end
 

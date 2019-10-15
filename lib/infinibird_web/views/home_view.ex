@@ -1,6 +1,7 @@
 defmodule InfinibirdWeb.HomeView do
   use InfinibirdWeb, :view
 
+  @spec distance(atom | %{assigns: nil | keyword | map}) :: nil | String.t()
   def distance(conn) do
     case conn.assigns[:distance_meters] do
       nil -> nil
@@ -9,22 +10,27 @@ defmodule InfinibirdWeb.HomeView do
     end
   end
 
+  @spec number_of_trips(atom | %{assigns: nil | keyword | map}) :: String.t()
   def number_of_trips(conn) do
     conn.assigns[:number_of_trips]
   end
 
+  @spec average_speed(atom | %{assigns: nil | keyword | map}) :: String.t()
   def average_speed(conn) do
     conn.assigns[:average_speed]
   end
 
+  @spec max_speed(atom | %{assigns: nil | keyword | map}) :: String.t()
   def max_speed(conn) do
     conn.assigns[:max_speed]
   end
 
+  @spec max_acceleration(atom | %{assigns: nil | keyword | map}) :: String.t()
   def max_acceleration(conn) do
     conn.assigns[:max_acceleration]
   end
 
+  @spec longest_ride(atom | %{assigns: nil | keyword | map}) :: nil | String.t()
   def longest_ride(conn) do
     case conn.assigns[:longest_ride] do
       nil -> nil
@@ -33,6 +39,7 @@ defmodule InfinibirdWeb.HomeView do
     end
   end
 
+  @spec travel_time(atom | %{assigns: nil | keyword | map}) :: nil | String.t()
   def travel_time(conn) do
     case conn.assigns[:travel_time_minutes] do
       nil -> nil
@@ -41,6 +48,7 @@ defmodule InfinibirdWeb.HomeView do
     end
   end
 
+  @spec most_famous_day(atom | %{assigns: nil | keyword | map}) :: nil | String.t()
   def most_famous_day(conn) do
     case conn.assigns[:most_famous_day] do
       nil -> nil
@@ -54,6 +62,7 @@ defmodule InfinibirdWeb.HomeView do
     end
   end
 
+  @spec most_famous_time_of_day(atom | %{assigns: nil | keyword | map}) :: nil | String.t()
   def most_famous_time_of_day(conn) do
     case conn.assigns[:most_famous_time_of_day] do
       nil -> nil

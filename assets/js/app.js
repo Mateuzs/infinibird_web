@@ -1,9 +1,8 @@
 // webpack automatically bundles all modules in your
 // entry points. Those entry points can be configured
 // in "webpack.config.js".
-//
-// Import dependencies
 
+// Import dependencies
 import "phoenix_html";
 import Chartkick from "chartkick";
 import L from "leaflet";
@@ -15,7 +14,6 @@ import integrateMap from "../js/integrateMap";
 import drawTrip from "../js/drawTrip";
 
 // // Live View
-
 let liveSocket = new LiveSocket("/live");
 liveSocket.connect();
 

@@ -1,6 +1,7 @@
 defmodule Infinibird.DataProvider do
   require Logger
 
+  @spec get_rides_metrics(String.t()) :: list(RidesMetrics)
   def get_rides_metrics(device_id) do
     [username: username, password: password, realm: _realm] =
       Application.get_env(:infinibird, :infinibird_service_basic_auth_config)
@@ -25,6 +26,7 @@ defmodule Infinibird.DataProvider do
     end
   end
 
+  @spec get_trips(String.t()) :: list()
   def get_trips(device_id) do
     [username: username, password: password, realm: _realm] =
       Application.get_env(:infinibird, :infinibird_service_basic_auth_config)

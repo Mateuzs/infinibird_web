@@ -1,6 +1,9 @@
 defmodule Infinibird.Auth.AuthService do
   require Logger
 
+  @spec authorise(String.t()) ::
+          {:unauthorised}
+          | {:authorised, String.t(), String.t()}
   def authorise(user_password) do
     [username: username, password: password, realm: _realm] =
       Application.get_env(:infinibird, :infinibird_service_basic_auth_config)
@@ -35,15 +38,15 @@ defmodule Infinibird.Auth.AuthService do
     end
   end
 
-  @spec generate_token(any()) :: any()
+  @spec generate_token(String.t()) :: binary
   def generate_token(id) do
     token_gen_data = Application.get_env(:phoenix, :phoenix_token_data)
 
     Phoenix.Token.sign(token_gen_data.secret, token_gen_data.salt, id, max_age: 86400)
   end
 
-  @spec verify_token(nil | binary()) ::
-          {:error, :expired | :invalid | :missing} | {:ok, nil | binary()}
+  @spec verify_token(nil | binary) ::
+          {:error, :expired | :invalid | :missing} | {:ok, nil | binary}
   def verify_token(token) do
     token_gen_data = Application.get_env(:phoenix, :phoenix_token_data)
 
@@ -53,6 +56,8 @@ defmodule Infinibird.Auth.AuthService do
     end
   end
 
+  @spec get_auth_token(atom | %{assigns: atom | map}) ::
+          {:error, :expired | :invalid | :missing | nil} | {:ok, binary}
   def get_auth_token(conn) do
     case extract_token(conn) do
       {:ok, token} ->
