@@ -234,32 +234,25 @@ defmodule Infinibird.ChartsConfig do
                 data: %{
                   "#{Date.add(Date.utc_today(), -6)}":
                     Map.get(week_data, "#{Date.add(Date.utc_today(), -6)}", [])
-                    |> Enum.reduce(0, fn e, acc -> acc + e["tavel_time_minutes"] end)
-                    |> (fn e -> Kernel.trunc(e / 1000) end).(),
+                    |> Enum.reduce(0, fn e, acc -> acc + e["travel_time_minutes"] end),
                   "#{Date.add(Date.utc_today(), -5)}":
                     Map.get(week_data, "#{Date.add(Date.utc_today(), -5)}", [])
-                    |> Enum.reduce(0, fn e, acc -> acc + e["tavel_time_minutes"] end)
-                    |> (fn e -> Kernel.trunc(e / 1000) end).(),
+                    |> Enum.reduce(0, fn e, acc -> acc + e["travel_time_minutes"] end),
                   "#{Date.add(Date.utc_today(), -4)}":
                     Map.get(week_data, "#{Date.add(Date.utc_today(), -4)}", [])
-                    |> Enum.reduce(0, fn e, acc -> acc + e["tavel_time_minutes"] end)
-                    |> (fn e -> Kernel.trunc(e / 1000) end).(),
+                    |> Enum.reduce(0, fn e, acc -> acc + e["travel_time_minutes"] end),
                   "#{Date.add(Date.utc_today(), -3)}":
                     Map.get(week_data, "#{Date.add(Date.utc_today(), -3)}", [])
-                    |> Enum.reduce(0, fn e, acc -> acc + e["tavel_time_minutes"] end)
-                    |> (fn e -> Kernel.trunc(e / 1000) end).(),
+                    |> Enum.reduce(0, fn e, acc -> acc + e["travel_time_minutes"] end),
                   "#{Date.add(Date.utc_today(), -2)}":
                     Map.get(week_data, "#{Date.add(Date.utc_today(), -2)}", [])
-                    |> Enum.reduce(0, fn e, acc -> acc + e["tavel_time_minutes"] end)
-                    |> (fn e -> Kernel.trunc(e / 1000) end).(),
+                    |> Enum.reduce(0, fn e, acc -> acc + e["travel_time_minutes"] end),
                   "#{Date.add(Date.utc_today(), -1)}":
                     Map.get(week_data, "#{Date.add(Date.utc_today(), -1)}", [])
-                    |> Enum.reduce(0, fn e, acc -> acc + e["tavel_time_minutes"] end)
-                    |> (fn e -> Kernel.trunc(e / 1000) end).(),
+                    |> Enum.reduce(0, fn e, acc -> acc + e["travel_time_minutes"] end),
                   "#{Date.utc_today()}":
                     Map.get(week_data, "#{Date.utc_today()}", [])
-                    |> Enum.reduce(0, fn e, acc -> acc + e["tavel_time_minutes"] end)
-                    |> (fn e -> Kernel.trunc(e / 1000) end).()
+                    |> Enum.reduce(0, fn e, acc -> acc + e["travel_time_minutes"] end)
                 }
               }
             ]
