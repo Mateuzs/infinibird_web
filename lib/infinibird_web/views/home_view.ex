@@ -10,22 +10,31 @@ defmodule InfinibirdWeb.HomeView do
     end
   end
 
-  @spec number_of_trips(atom | %{assigns: nil | keyword | map}) :: String.t()
+  @spec number_of_trips(atom | %{assigns: nil | keyword | map}) :: nil | String.t()
   def number_of_trips(conn) do
-    conn.assigns[:number_of_trips]
+    case conn.assigns[:number_of_trips] do
+      nil -> nil
+      value -> value
+    end
   end
 
-  @spec average_speed(atom | %{assigns: nil | keyword | map}) :: String.t()
+  @spec average_speed(atom | %{assigns: nil | keyword | map}) :: nil | String.t()
   def average_speed(conn) do
-    conn.assigns[:average_speed]
+    case conn.assigns[:average_speed] do
+      nil -> nil
+      value -> value
+    end
   end
 
-  @spec max_speed(atom | %{assigns: nil | keyword | map}) :: String.t()
+  @spec max_speed(atom | %{assigns: nil | keyword | map}) :: nil | String.t()
   def max_speed(conn) do
-    conn.assigns[:max_speed]
+    case conn.assigns[:max_speed] do
+      nil -> nil
+      value -> value
+    end
   end
 
-  @spec max_acceleration(atom | %{assigns: nil | keyword | map}) :: String.t()
+  @spec max_acceleration(atom | %{assigns: nil | keyword | map}) :: nil | String.t()
   def max_acceleration(conn) do
     conn.assigns[:max_acceleration]
   end
