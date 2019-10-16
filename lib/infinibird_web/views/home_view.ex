@@ -53,7 +53,7 @@ defmodule InfinibirdWeb.HomeView do
     case conn.assigns[:travel_time_minutes] do
       nil -> nil
       time when time < 60 -> "#{time}min"
-      time -> "#{Kernel.trunc(time / 60)}hrs #{rem(time, 60)}min"
+      time -> "#{Kernel.trunc(time / 60)}h #{rem(time, 60)}min"
     end
   end
 
