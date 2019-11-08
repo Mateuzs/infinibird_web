@@ -5,17 +5,14 @@ defmodule Infinibird.Application do
 
   use Application
 
+  @spec start(any, any) :: {:error, any} | {:ok, pid}
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
       # Start the endpoint when the application starts
       InfinibirdWeb.Endpoint
-      # Starts a worker by calling: Infinibird.Worker.start_link(arg)
-      # {Infinibird.Worker, arg},
     ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
     :ets.new(:infinibird_cache, [:public, :named_table])
     opts = [strategy: :one_for_one, name: Infinibird.Supervisor]
     Supervisor.start_link(children, opts)

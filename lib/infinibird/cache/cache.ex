@@ -2,12 +2,13 @@ defmodule Infinibird.Cache do
   require Logger
   alias Infinibird.RidesMetricsProcessor
   alias Infinibird.DataProvider
+  @data_expiration_time 120
 
   @spec get(String.t(), atom, List.atom()) :: any
   def get(device_id, data_type, opts \\ []) do
     case lookup(device_id, data_type) do
       nil ->
-        ttl = Keyword.get(opts, :ttl, 120)
+        ttl = Keyword.get(opts, :ttl, @data_expiration_time)
         cache_apply(device_id, data_type, ttl)
 
       result ->

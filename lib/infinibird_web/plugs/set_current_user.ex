@@ -1,9 +1,11 @@
 defmodule InfinibirdWeb.Plugs.SetCurrentUser do
   import Plug.Conn
 
+  @spec init(any) :: nil
   def init(_params) do
   end
 
+  @spec call(Plug.Conn.t(), any) :: Plug.Conn.t()
   def call(conn, _params) do
     current_user = Plug.Conn.get_session(conn, :current_user_id)
 

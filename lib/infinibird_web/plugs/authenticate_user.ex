@@ -6,6 +6,7 @@ defmodule InfinibirdWeb.Plugs.AuthenticateUser do
   def init(_params) do
   end
 
+  @spec call(Plug.Conn.t(), any) :: Plug.Conn.t()
   def call(conn, _params) do
     if conn.assigns.user_signed_in? do
       conn
