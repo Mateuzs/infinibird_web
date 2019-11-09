@@ -6,7 +6,6 @@
 }
 
 .travels-container {
-  height: 100%;
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -28,16 +27,39 @@
 .trips-container {
   align-content: center;
   justify-content: center;
-  flex-basis: 20%;
+  display: flex;
   flex-grow: 1;
+  flex-shrink: 1;
+  flex-direction: column;
   min-width: 300px;
   margin: 1%;
 }
 
-.trips {
+.phx-connected {
+  width: 100%;
+  flex-grow: 1;
   flex-direction: column;
   display: flex;
+  flex-shrink: 1;
+  flex-basis: 0;
+}
+
+.phx-disconnected {
   width: 100%;
+  flex-grow: 1;
+  flex-direction: column;
+  display: flex;
+  flex-shrink: 1;
+  flex-basis: 0;
+}
+
+.trips {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
 }
 
 .trips__details-header {
@@ -82,13 +104,16 @@
   color: $base-background-color;
   border-radius: $base-radius;
   border: $dark-blue solid 2px;
-  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
-  min-height: 0;
-  overflow: scroll;
+  flex-shrink: 1;
+  overflow-y: scroll;
+  flex-basis: 300px; /* IMPORTANT: you need this for non-chrome browsers */
 }
 
 .trips__trip {
+  flex-shrink: 0;
   background: $dark-blue;
   border: none;
   color: $base-background-color;
