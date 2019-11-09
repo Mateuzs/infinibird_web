@@ -45,7 +45,14 @@ defmodule Infinibird.DataProvider do
       {:ok, response} ->
         Logger.info("fetched data from infinibird_service")
 
-        Bson.decode(response.body)
+        data = Bson.decode(response.body)
+
+        data
+        |> Map.to_list()
+        |> Enum.sort_by(fn ride ->
+          data = ride |> elem(1)
+          data.start_time
+        end)
     end
   end
 end

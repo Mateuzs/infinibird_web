@@ -4,7 +4,7 @@ defmodule Infinibird.MixProject do
   def project do
     [
       app: :infinibird,
-      version: "0.5.0",
+      version: "0.5.1",
       elixir: "~> 1.8",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),

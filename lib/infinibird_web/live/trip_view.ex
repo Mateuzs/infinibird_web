@@ -21,13 +21,13 @@ defmodule InfinibirdWeb.TripView do
      |> assign(stp_amount: "")
      |> assign(lt_amount: "")
      |> assign(rt_amount: "")
-     |> assign(trips: Map.to_list(trips))}
+     |> assign(trips: trips)}
   end
 
   @spec handle_event(<<_::104>>, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}
-  def handle_event("get-user-data", value, socket) do
+  def handle_event("get-trip-data", trip_id, socket) do
     trips = socket.assigns.trips
-    trip = String.to_atom(value)
+    trip = String.to_atom(trip_id)
 
     distance = trips[trip].distance_meters
 

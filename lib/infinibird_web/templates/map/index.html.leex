@@ -17,9 +17,13 @@
   <p class="trips__list-header"> PRZEBYTE TRASY </p>
   <div class="trips__list">
     <%= for {trip, data} <- @trips do %>
-        <button tabindex="1" class="trips__trip" phx-click="get-user-data" value="<%= trip %>" onclick="drawTrip(<%= Jason.encode!(data[:points]) %>)">
-            <%= data[:name] %>
+        <button tabindex="1"
+                class="trips__trip" 
+                phx-click="get-trip-data" 
+                value="<%= trip %>" 
+                onclick="drawTrip(<%= Jason.encode!(data[:points]) %>)"><%= data[:name] %>
         </button>
     <% end %>
   </div>
 </div>
+
