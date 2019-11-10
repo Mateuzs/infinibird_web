@@ -267,7 +267,7 @@ defmodule Infinibird.ChartsConfig do
             title: "Liczba przyspieszeń oraz zahamowań pojazdu",
             colors: ["green", "orange"]
           },
-          donut: false,
+          donut: true,
           data_extractor: fn data ->
             [
               [
@@ -286,7 +286,7 @@ defmodule Infinibird.ChartsConfig do
             title: "Liczba manewrów skrętu pojazdu",
             colors: ["purple", "cyan"]
           },
-          donut: false,
+          donut: true,
           data_extractor: fn data ->
             [
               [
