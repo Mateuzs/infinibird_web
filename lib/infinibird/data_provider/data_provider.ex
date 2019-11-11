@@ -45,7 +45,9 @@ defmodule Infinibird.DataProvider do
       "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/trips/#{device_id}",
       [{"Authorization", "Basic #{credentials}"}],
       stream_to: self(),
-      async: :once
+      async: :once,
+      timeout: 50_000,
+      recv_timeout: 50_000
     )
   end
 end
