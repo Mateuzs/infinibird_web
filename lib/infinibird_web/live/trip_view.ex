@@ -1,12 +1,17 @@
 defmodule InfinibirdWeb.TripView do
   use Phoenix.LiveView
+  alias Infinibird.DataProvider
 
   def render(assigns) do
     InfinibirdWeb.MapView.render("index.html", assigns)
   end
 
   def mount(session, socket) do
-    trips = Map.get(session, :data)
+    device_id = Map.get(session, :device_id)
+
+    if connected?(socket) do
+      send(self(), {:get_trips, device_id})
+    end
 
     {:ok,
      socket
@@ -21,7 +26,45 @@ defmodule InfinibirdWeb.TripView do
      |> assign(stp_amount: "")
      |> assign(lt_amount: "")
      |> assign(rt_amount: "")
-     |> assign(trips: trips)}
+     |> assign(trips: [])}
+  end
+
+  def handle_info({:get_trips, device_id}, socket) do
+    rides_stream_ref = DataProvider.stream_rides(device_id)
+
+    {:noreply, socket |> assign(rides_stream_ref: rides_stream_ref)}
+  end
+
+  def handle_info(async_response, socket) do
+    rides_stream_ref = socket.assigns.rides_stream_ref
+    rides_stream_ref_id = rides_stream_ref.id
+
+    case async_response do
+      %HTTPoison.AsyncStatus{id: ^rides_stream_ref_id} ->
+        HTTPoison.stream_next(rides_stream_ref)
+        {:noreply, socket}
+
+      %HTTPoison.AsyncHeaders{id: ^rides_stream_ref_id} ->
+        HTTPoison.stream_next(rides_stream_ref)
+        {:noreply, socket}
+
+      %HTTPoison.AsyncChunk{chunk: chunk, id: ^rides_stream_ref_id} ->
+        HTTPoison.stream_next(rides_stream_ref)
+
+        old_trips = socket.assigns.trips
+        new_trips = Bson.decode(chunk) |> Map.to_list()
+
+        {:noreply,
+         assign(socket,
+           trips:
+             Enum.sort_by(old_trips ++ new_trips, fn e ->
+               elem(e, 1).start_time
+             end)
+         )}
+
+      %HTTPoison.AsyncEnd{id: ^rides_stream_ref_id} ->
+        {:noreply, socket}
+    end
   end
 
   @spec handle_event(<<_::104>>, any, Phoenix.LiveView.Socket.t()) :: {:noreply, any}

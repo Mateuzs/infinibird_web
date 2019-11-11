@@ -76,6 +76,18 @@
   font-size: 1.2em;
 }
 
+.trips__list-waiting_message {
+  color: $dark-blue;
+  text-align: center;
+  font-size: 1.2em;
+  justify-content: center;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+
 .trips__details {
   background: $snow-white;
   margin-bottom: 30px;

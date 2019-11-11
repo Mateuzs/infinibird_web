@@ -26,33 +26,26 @@ defmodule Infinibird.DataProvider do
     end
   end
 
-  @spec get_trips(String.t()) :: list()
-  def get_trips(device_id) do
+  @spec stream_rides(any) :: %{
+          :__struct__ => HTTPoison.AsyncResponse | HTTPoison.Response,
+          optional(:body) => any,
+          optional(:headers) => [any],
+          optional(:id) => reference,
+          optional(:request) => HTTPoison.Request.t(),
+          optional(:request_url) => any,
+          optional(:status_code) => integer
+        }
+  def stream_rides(device_id) do
     [username: username, password: password, realm: _realm] =
       Application.get_env(:infinibird, :infinibird_service_basic_auth_config)
 
     credentials = "#{username}:#{password}" |> Base.encode64()
 
-    HTTPoison.get(
+    HTTPoison.get!(
       "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/trips/#{device_id}",
-      [{"content-type", "application/bson"}, {"Authorization", "Basic #{credentials}"}]
+      [{"Authorization", "Basic #{credentials}"}],
+      stream_to: self(),
+      async: :once
     )
-    |> case do
-      {:error, _error} ->
-        Logger.error("Cannot connect to infinibird_service!")
-        %{}
-
-      {:ok, response} ->
-        Logger.info("fetched data from infinibird_service")
-
-        data = Bson.decode(response.body)
-
-        data
-        |> Map.to_list()
-        |> Enum.sort_by(fn ride ->
-          data = ride |> elem(1)
-          data.start_time
-        end)
-    end
   end
 end
