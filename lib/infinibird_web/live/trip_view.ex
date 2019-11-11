@@ -48,7 +48,7 @@ defmodule InfinibirdWeb.TripView do
         HTTPoison.stream_next(rides_stream_ref)
         {:noreply, socket}
 
-      %HTTPoison.AsyncChunk{chunk: chunk, id: ^rides_stream_ref_id} ->
+      %HTTPoison.AsyncChunk{chunk: chunk, id: ^rides_stream_ref_id} when chunk !== "Not found!" ->
         HTTPoison.stream_next(rides_stream_ref)
 
         old_trips = socket.assigns.trips
@@ -61,6 +61,10 @@ defmodule InfinibirdWeb.TripView do
                elem(e, 1).start_time
              end)
          )}
+
+      %HTTPoison.AsyncChunk{chunk: _chunk, id: ^rides_stream_ref_id} ->
+        HTTPoison.stream_next(rides_stream_ref)
+        {:noreply, socket}
 
       %HTTPoison.AsyncEnd{id: ^rides_stream_ref_id} ->
         {:noreply, socket}
