@@ -51,8 +51,12 @@ defmodule InfinibirdWeb.TripView do
       %HTTPoison.AsyncChunk{chunk: chunk, id: ^rides_stream_ref_id} when chunk !== "Not found!" ->
         HTTPoison.stream_next(rides_stream_ref)
 
+        decoded_trips = Bson.decode(chunk)
+
+        IO.inspect(decoded_trips)
+
         old_trips = socket.assigns.trips
-        new_trips = Bson.decode(chunk) |> Map.to_list()
+        new_trips = decoded_trips |> Map.to_list()
 
         {:noreply,
          assign(socket,
