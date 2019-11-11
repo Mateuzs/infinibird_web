@@ -43,7 +43,7 @@ defmodule Infinibird.DataProvider do
 
     HTTPoison.get!(
       "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/trips/#{device_id}",
-      [{"Authorization", "Basic #{credentials}"}],
+      [{"Authorization", "Basic #{credentials}"}, {"content-type", "application/bson"}],
       stream_to: self(),
       async: :once,
       timeout: 50_000,
