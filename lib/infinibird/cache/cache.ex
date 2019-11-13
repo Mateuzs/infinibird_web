@@ -2,7 +2,7 @@ defmodule Infinibird.Cache do
   require Logger
   alias Infinibird.RidesMetricsProcessor
   alias Infinibird.DataProvider
-  @data_expiration_time 0
+  @data_expiration_time 120
 
   @spec get(String.t(), atom, List.atom()) :: any
   def get(device_id, data_type, opts \\ []) do

@@ -53,8 +53,6 @@ defmodule InfinibirdWeb.TripView do
 
         decoded_trips = Bson.decode(chunk)
 
-        IO.inspect(decoded_trips)
-
         old_trips = socket.assigns.trips
         new_trips = decoded_trips |> Map.to_list()
 
