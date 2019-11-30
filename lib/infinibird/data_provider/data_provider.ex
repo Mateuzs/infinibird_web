@@ -35,6 +35,7 @@ defmodule Infinibird.DataProvider do
           optional(:request_url) => any,
           optional(:status_code) => integer
         }
+
   def stream_rides(device_id) do
     [username: username, password: password, realm: _realm] =
       Application.get_env(:infinibird, :infinibird_service_basic_auth_config)
@@ -46,6 +47,19 @@ defmodule Infinibird.DataProvider do
       [{"Content-Type", "application/bson"}, {"Authorization", "Basic #{credentials}"}],
       stream_to: self(),
       async: :once
+    )
+  end
+
+  # a temporary workaround for async fetching issue on Gigalixir infra
+  def fetch_trips(device_id) do
+    [username: username, password: password, realm: _realm] =
+      Application.get_env(:infinibird, :infinibird_service_basic_auth_config)
+
+    credentials = "#{username}:#{password}" |> Base.encode64()
+
+    HTTPoison.get(
+      "#{Application.get_env(:infinibird, :infinibird_service_url)}/infinibird/trips/#{device_id}",
+      [{"Content-Type", "application/bson"}, {"Authorization", "Basic #{credentials}"}]
     )
   end
 end

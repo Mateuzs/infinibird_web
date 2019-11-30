@@ -30,9 +30,21 @@ defmodule InfinibirdWeb.TripView do
   end
 
   def handle_info({:get_trips, device_id}, socket) do
-    rides_stream_ref = DataProvider.stream_rides(device_id)
+    # async rides fetching - chunks, TODO: fix problem on Gigalixir
+    # rides_stream_ref = DataProvider.stream_rides(device_id)
+    # {:noreply, socket |> assign(rides_stream_ref: rides_stream_ref)}
 
-    {:noreply, socket |> assign(rides_stream_ref: rides_stream_ref)}
+    {:ok, %HTTPoison.Response{body: trips}} = DataProvider.fetch_trips(device_id)
+
+    decoded_trips = Bson.decode(trips)
+
+    {:noreply,
+     assign(socket,
+       trips:
+         Enum.sort_by(decoded_trips, fn e ->
+           elem(e, 1).start_time
+         end)
+     )}
   end
 
   def handle_info(async_response, socket) do
