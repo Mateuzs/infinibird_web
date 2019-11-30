@@ -50,7 +50,7 @@ defmodule Infinibird.DataProvider do
     )
   end
 
-  # a temporary workaround for async fetching issue on Gigalixir infra
+  # a temporary fix for async fetching issue on Gigalixir infra
   def fetch_trips(device_id) do
     [username: username, password: password, realm: _realm] =
       Application.get_env(:infinibird, :infinibird_service_basic_auth_config)
