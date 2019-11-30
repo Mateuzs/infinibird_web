@@ -1,19 +1,31 @@
-# Infinibird
+# InfinibirdWeb
 
-Responsive web app computing, aggregating data and visualising it on interactive charts and geographic map.  
-Communicates with huge distributed system in order to get data about a multitude of users.  
-Users and computed data are stored in DB, ready to be served.
+A web application fully built in Elixir and Phoenix. It's a part of system which analyzes, computes, aggregates and visualizes the telematics data gathered while driving a car, on interactive charts and geographic map.
 
-It's build from two main components:
+Communicates with distributed system TANGO which gathers the data from a huge amount of users.
 
-- `infinibird_service`: backend functionality, genServer, genSupervisor, API, database communication, data computing, etc. separate Elixir app.
-- `infinibird_web`: Phoenix app, routing, user session, presentation layer, frontend stuff.
+Supported for every major browser and prepared for desktops and mobile devices, according to the responsive web design.
+
+Application is build from two main components:
+
+- `infinibird_service`: a microservice responsible for backend functionality, communication layer and database.
+- `infinibird_web`: Phoenix app responsible for routing, user session and presentation layer.
+
+## Testing
+
+The best way to see this application in action is to visit the website:
+
+[`https://infinibird.gigalixirapp.com`](https://infinibird.gigalixirapp.com)
+
+And use the testing token: `549af9e4`
+
+## Building local environment
 
 To start the app:
 
+- Download the project.
 - Install dependencies with `mix deps.get`
-- Create and migrate your database with `mix ecto.setup`
 - Install Node.js dependencies with `cd assets && yarn install`
 - Start Phoenix endpoint with `mix phx.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+Now you can visit [`localhost:5000`](http://localhost:5000) from your browser.
